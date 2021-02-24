@@ -9,7 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseaseOutbreakMonitor">
-        <activity android:name=".PatientDetailsActivity"
+        <activity android:name=".SymptomsActivity"
+            android:parentActivityName=".DiagnosisActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="GroupProject.Team8.DiseaseOutbreakMonitor.DiagnosisActivity" /></activity>
+        <activity
+            android:name=".DiagnosisActivity"
+            android:parentActivityName=".PatientDetailsActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="GroupProject.Team8.DiseaseOutbreakMonitor.PatientDetailsActivity" />
+        </activity>
+        <activity
+            android:name=".PatientDetailsActivity"
             android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->

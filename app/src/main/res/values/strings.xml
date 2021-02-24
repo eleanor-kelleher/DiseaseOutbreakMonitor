@@ -6,4 +6,9 @@
     <string name="button_male">Male</string>
     <string name="button_female">Female</string>
     <string name="button_next">Next</string>
+    <string name="text_diagnosis">Health Worker Diagnosis:</string>
+    <string name="radio_cholera">Cholera</string>
+    <string name="radio_polio">Polio</string>
+    <string name="radio_measles">Measles</string>
+    <string name="radio_unsure">Unsure</string>
 </resources>
