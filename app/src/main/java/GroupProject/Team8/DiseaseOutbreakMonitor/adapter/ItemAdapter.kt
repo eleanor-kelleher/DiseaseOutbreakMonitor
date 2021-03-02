@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import GroupProject.Team8.DiseaseOutbreakMonitor.R
 import GroupProject.Team8.DiseaseOutbreakMonitor.model.Symptom
@@ -16,9 +17,10 @@ class ItemAdapter(private val context: Context, private val dataset: List<Sympto
     class ItemViewHolder (private val view: View) : RecyclerView.ViewHolder(view)
     {
         val textView: TextView = view.findViewById(R.id.item_title)
+        val imageView: ImageView = view.findViewById(R.id.item_image)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder
+    override fun onCreateViewHolder(parent: ViewGroup, amcamviewType: Int): ItemViewHolder
     {
         // create a new view
         val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
@@ -34,6 +36,7 @@ class ItemAdapter(private val context: Context, private val dataset: List<Sympto
     {
         val item = dataset[position]
         holder.textView.text = context.resources.getString(item.stringResourceId)
+        holder.imageView.setImageResource(item.imageResourceId)
     }
 
 }
