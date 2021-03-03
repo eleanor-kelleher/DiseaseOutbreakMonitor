@@ -5,26 +5,50 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
-    <LinearLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:orientation = "vertical"
-        android:padding = "16dp">
+        android:layout_height = "match_parent"
+        android:padding = "8dp">
 
         <ImageView
-            android:layout_width = "match_parent"
-            android:layout_height = "194dp"
             android:id = "@+id/item_image"
-            android:importantForAccessibility = "no"
-            android:scaleType = "centerCrop" />
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:scaleType = "centerCrop"
+            />
 
+        <!--
+                Hardcoded distance from the image with marginTop
+        -->
         <TextView
             android:id = "@+id/item_title"
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
-            android:padding = "16dp"
-            android:textAppearance = "?attr/textAppearanceHeadline6" />
+            android:textAppearance = "?attr/textAppearanceHeadline6"
 
-    </LinearLayout>
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="2dp"
+
+            android:layout_below = "@id/item_image"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/myCheckBox"
+            />
+
+        <!--
+                Made manual adjustments to checkbox size to better align it with the text.
+                layout_width, height were "wrap_content" before the adjustments.
+                Hardcoded distance from the image with marginTop
+        -->
+        <CheckBox
+            android:id="@+id/myCheckBox"
+            android:layout_width="38dp"
+            android:layout_height="27dp"
+            android:layout_below="@id/item_image"
+            android:layout_alignParentRight="true"
+
+            android:layout_marginTop="10dp"
+             />
+
+    </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>
