@@ -14,8 +14,7 @@
             android:id = "@+id/item_image"
             android:layout_width = "match_parent"
             android:layout_height = "wrap_content"
-            android:scaleType = "centerCrop"
-            />
+            android:scaleType = "centerCrop" />
 
         <!--
                 Hardcoded distance from the image with marginTop
@@ -25,14 +24,11 @@
             android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
             android:textAppearance = "?attr/textAppearanceHeadline6"
-
             android:layout_marginTop="10dp"
             android:layout_marginRight="2dp"
-
             android:layout_below = "@id/item_image"
             android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@id/myCheckBox"
-            />
+            android:layout_toLeftOf="@id/myCheckBox" />
 
         <!--
                 Made manual adjustments to checkbox size to better align it with the text.
@@ -45,9 +41,7 @@
             android:layout_height="27dp"
             android:layout_below="@id/item_image"
             android:layout_alignParentRight="true"
-
-            android:layout_marginTop="10dp"
-             />
+            android:layout_marginTop="10dp" />
 
     </RelativeLayout>
 
