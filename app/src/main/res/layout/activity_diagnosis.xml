@@ -29,7 +29,7 @@
         android:layout_marginRight="16dp"
         android:text="@string/text_diagnosis"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
+        app:layout_constraintEnd_toStartOf="@+id/edit_text_age"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
