@@ -10,18 +10,16 @@ public class PatientModel {
     private String date;
 
     private int age;
-    private boolean sexIsMale;
+    private String sex;
     private float temperatureCelsius;
-
-    private String diagnosis;
-
+    private String disease;
+    private String comment;
     private ArrayList<String> symptoms;
 
-    public PatientModel(int id, String date, int age, boolean sexIsMale) {
-        this.id = id;
+    public PatientModel(String date, int age, String sex) {
         this.date = date;
         this.age = age;
-        this.sexIsMale = sexIsMale;
+        this.sex = sex;
     }
 
     public PatientModel() {
@@ -67,12 +65,12 @@ public class PatientModel {
         this.age = age;
     }
 
-    public boolean isSexMale() {
-        return sexIsMale;
+    public String getSex() {
+        return sex;
     }
 
-    public void setSexIsMale(boolean sexIsMale) {
-        this.sexIsMale = sexIsMale;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public float getTemperatureCelsius() {
@@ -83,19 +81,33 @@ public class PatientModel {
         this.temperatureCelsius = temperatureCelsius;
     }
 
-    public String getDiagnosis() {
-        return diagnosis;
+    public String getDisease() {
+        return disease;
     }
 
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
+    public void setDisease(String disease) {
+        this.disease = disease;
     }
 
-    public ArrayList<String> getSymptoms() {
-        return symptoms;
+    public String getComment() {
+        return comment;
     }
 
-    public void setSymptoms(ArrayList<String> symptoms) {
-        this.symptoms = symptoms;
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getSymptoms() {
+        StringBuffer sb = new StringBuffer();
+
+        for (String s : symptoms) {
+            sb.append(s);
+            sb.append(" ");
+        }
+        return sb.toString();
+    }
+
+    public void addToSymptoms(String symptom) {
+        this.symptoms.add(symptom);
     }
 }
