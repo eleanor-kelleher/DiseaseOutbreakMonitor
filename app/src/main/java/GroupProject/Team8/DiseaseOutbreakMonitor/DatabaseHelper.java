@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -35,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + CLMN_COMMENT + " TEXT, "
                 + CLMN_LATITUDE + " REAL, "
                 + CLMN_LONGITUDE + " REAL, "
-                + CLMN_DATE_CREATED + " TEXT)";
+                + CLMN_DATE_CREATED + " INT)";
         db.execSQL(createTableStatement);
     }
 
@@ -58,7 +60,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(CLMN_LONGITUDE, patientModel.getLongitude());
         cv.put(CLMN_DATE_CREATED, patientModel.getDate());
 
-        long insert = db.insert(PATIENT_TABLE, null, cv);
-        return insert != -1;
+        try {
+            long insert = db.insert(PATIENT_TABLE, null, cv);
+            if (insert == -1) {
+                return false;
+        }
+        } catch (Exception e) {
+            Log.e("", "exception : " + e.toString());
+        } finally {
+            db.close();
+        }
+        return true;
+
     }
 }

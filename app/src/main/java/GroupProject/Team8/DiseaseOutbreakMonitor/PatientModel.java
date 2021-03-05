@@ -7,7 +7,7 @@ public class PatientModel {
     private int id;
     private float latitude;
     private float longitude;
-    private String date;
+    private long date;
 
     private int age;
     private String sex;
@@ -16,7 +16,7 @@ public class PatientModel {
     private String comment;
     private ArrayList<String> symptoms;
 
-    public PatientModel(String date, int age, String sex) {
+    public PatientModel(long date, int age, String sex) {
         this.date = date;
         this.age = age;
         this.sex = sex;
@@ -49,11 +49,11 @@ public class PatientModel {
         this.longitude = longitude;
     }
 
-    public String getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
