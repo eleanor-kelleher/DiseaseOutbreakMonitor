@@ -33,10 +33,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RadioGroup
-        android:id="@+id/radioGroupDiseases"
+    <TextView
+        android:id="@+id/textComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/text_comment"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/edit_text_age"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupDiseases" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupDiseases"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,30 +63,46 @@
             android:id="@+id/radioCholera"
             android:layout_width="135dp"
             android:layout_height="wrap_content"
+            android:onClick="checkRadio"
             android:text="@string/radio_cholera"
-            android:onClick="checkRadio">
-        </RadioButton>
+            android:textSize="24sp"></RadioButton>
 
         <RadioButton
             android:id="@+id/radioPolio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/radio_polio">
-        </RadioButton>
+            android:text="@string/radio_polio"
+            android:textSize="24sp"></RadioButton>
 
         <RadioButton
             android:id="@+id/radioMeasles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/radio_measles">
-        </RadioButton>
+            android:text="@string/radio_measles"
+            android:textSize="24sp"></RadioButton>
 
         <RadioButton
             android:id="@+id/radioUnsure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/radio_unsure">
-        </RadioButton>
+            android:text="@string/radio_unsure"
+            android:textSize="24sp"></RadioButton>
     </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextComment"
+        android:layout_width="378dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textComment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

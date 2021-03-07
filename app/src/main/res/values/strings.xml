@@ -40,4 +40,5 @@
     <string name="checkbox_stomach_pain">Stomach Pain</string>
     <string name="checkbox_thirst">Thirst</string>
     <string name="checkbox_vomiting">Vomiting</string>
+    <string name="text_comment">Further Comments:</string>
 </resources>
