@@ -7,13 +7,61 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonAddPatient"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:onClick="addNewPatient"
-        android:text="@string/button_add_patient"
+        android:id="@+id/newPatientButton"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:backgroundTint="#47B3BF"
+        android:drawableRight="@drawable/ic_newpatient"
+        android:text="New Patient"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.881" />
+
+    <TextView
+        android:id="@+id/diseaseOutbreakManager"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#47B3BF"
+        android:text="Disease Outbreak Manager"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/homeScreenImage"
+        android:layout_width="match_parent"
+        android:layout_height="453dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/diseaseOutbreakManager"
+        app:srcCompat="@drawable/HomeScreenImage" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome!"
+        android:textAlignment="center"
+        android:textColor="#47B3BF"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.702" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

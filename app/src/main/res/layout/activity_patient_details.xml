@@ -6,24 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".PatientDetailsActivity">
 
-    <EditText
-        android:id="@+id/edit_text_temperature"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textSize="24sp"
+    <TextView
+        android:id="@+id/patientDetails"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#47B3BF"
+        android:text="Patient Details"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Correct? inputType below -->
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/text_name"
+        android:textColor="#47B3BF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/edit_text_name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edit_text_age"
+        android:id="@+id/edit_text_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -31,11 +49,12 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:ems="10"
-        android:inputType="number"
+        android:inputType="text"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textAge"
-        app:layout_constraintTop_toTopOf="@+id/textAge" />
+        app:layout_constraintStart_toEndOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/textName" />
+
 
     <TextView
         android:id="@+id/textAge"
@@ -43,14 +62,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="@string/text_age"
-        android:textSize="24sp"
+        android:textColor="#47B3BF"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/edit_text_age"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/textName" />
+
+
+    <EditText
+        android:id="@+id/edit_text_age"
+        android:layout_width="245dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textAge"
+        app:layout_constraintStart_toStartOf="@id/edit_text_name"
+        app:layout_constraintTop_toTopOf="@+id/textAge" />
 
     <TextView
         android:id="@+id/textSex"
@@ -58,11 +99,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="64dp"
         android:text="@string/text_sex"
-        android:textSize="24sp"
+        android:textColor="#47B3BF"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_age" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_age"
+        app:layout_constraintTop_toTopOf="@id/textAge" />
 
     <Button
         android:id="@+id/button_male"
@@ -70,48 +114,168 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#47B3BF"
         android:onClick="setMale"
         android:text="@string/button_male"
-        app:layout_constraintEnd_toStartOf="@+id/button_female"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSex" />
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/textSex"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_age"/>
 
     <Button
         android:id="@+id/button_female"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="117dp"
-        android:layout_marginLeft="117dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#47B3BF"
         android:onClick="setFemale"
         android:text="@string/button_female"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_male"
-        app:layout_constraintTop_toTopOf="@+id/button_male" />
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/textSex"
+        app:layout_constraintTop_toBottomOf="@+id/button_male" />
 
     <Button
-        android:id="@+id/button_next"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
-        android:onClick="confirmPatientDetails"
-        android:text="@string/button_next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
+        android:id="@+id/button_undisclosed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#47B3BF"
+        android:onClick="setFemale"
+        android:text="@string/button_undisclosed"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/textSex"
+        app:layout_constraintTop_toBottomOf="@+id/button_female" />
+
+    <TextView
+        android:id="@+id/textTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="180dp"
         android:text="@string/text_temperature"
-        android:textSize="24sp"
+        android:textColor="#47B3BF"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_male" />
+        app:layout_constraintTop_toBottomOf="@+id/textSex" />
+
+    <EditText
+        android:id="@+id/edit_text_temperature"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textTemp"
+        app:layout_constraintTop_toTopOf="@+id/textTemp" />
+
+    <!-- Correct? inputType below -->
+
+    <!-- <TextView
+         android:id="@+id/textAddress"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="32dp"
+         android:layout_marginLeft="32dp"
+         android:layout_marginTop="64dp"
+         android:layout_marginEnd="16dp"
+         android:layout_marginRight="16dp"
+         android:text="@string/text_address"
+         android:textColor="#47B3BF"
+         android:textSize="22sp"
+         android:textStyle="bold"
+         app:layout_constraintEnd_toStartOf="@+id/edit_text_address"
+         app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="@id/textTemp" />
+
+     <EditText
+         android:id="@+id/edit_text_address"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="16dp"
+         android:layout_marginLeft="16dp"
+         android:layout_marginEnd="32dp"
+         android:layout_marginRight="32dp"
+         android:ems="10"
+         android:inputType="text"
+         android:textSize="24sp"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toEndOf="@+id/textAddress"
+         app:layout_constraintTop_toTopOf="@+id/textAddress" />
+
+     <TextView
+         android:id="@+id/textReligion"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="32dp"
+         android:layout_marginLeft="32dp"
+         android:layout_marginTop="64dp"
+         android:layout_marginEnd="16dp"
+         android:layout_marginRight="16dp"
+         android:text="@string/text_religion"
+         android:textColor="#47B3BF"
+         android:textSize="22sp"
+         android:textStyle="bold"
+         app:layout_constraintEnd_toStartOf="@+id/edit_text_religion"
+         app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="@id/textAddress" />
+
+     <EditText
+         android:id="@+id/edit_text_religion"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="16dp"
+         android:layout_marginLeft="16dp"
+         android:layout_marginEnd="32dp"
+         android:layout_marginRight="32dp"
+         android:ems="10"
+         android:inputType="text"
+         android:textSize="24sp"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toEndOf="@+id/textReligion"
+         app:layout_constraintTop_toTopOf="@+id/textReligion" />
+ -->
+
+    <Button
+        android:id="@+id/button_next2"
+        android:layout_width="119dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#47B3BF"
+        android:onClick="confirmPatientDetails"
+        android:text="@string/button_next"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
