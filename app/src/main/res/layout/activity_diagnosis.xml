@@ -6,15 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".DiagnosisActivity">
 
+    <TextView
+        android:id="@+id/healthWorkerDiagnosis"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#47B3BF"
+        android:text="Health Worker Diagnosis"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/button_next2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="119dp"
+        android:layout_height="61dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
         android:onClick="confirmDiagnosis"
         android:text="@string/button_next"
+        android:backgroundTint="#47B3BF"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -22,39 +41,25 @@
         android:id="@+id/textDiagnosis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="@string/text_diagnosis"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/edit_text_age"
+        android:text="Please choose one:"
+        android:textAlignment="center"
+        android:textColor="#47B3BF"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textComment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/text_comment"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/edit_text_age"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupDiseases" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.078" />
 
     <RadioGroup
         android:id="@+id/radioGroupDiseases"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="22dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textDiagnosis">
@@ -63,46 +68,70 @@
             android:id="@+id/radioCholera"
             android:layout_width="135dp"
             android:layout_height="wrap_content"
-            android:onClick="checkRadio"
             android:text="@string/radio_cholera"
-            android:textSize="24sp"></RadioButton>
+            android:textColor="#47B3BF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:onClick="checkRadio">
+        </RadioButton>
 
         <RadioButton
             android:id="@+id/radioPolio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/radio_polio"
-            android:textSize="24sp"></RadioButton>
+            android:textColor="#47B3BF"
+            android:textSize="24sp"
+            android:textStyle="bold"></RadioButton>
 
         <RadioButton
             android:id="@+id/radioMeasles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/radio_measles"
-            android:textSize="24sp"></RadioButton>
+            android:textColor="#47B3BF"
+            android:textSize="24sp"
+            android:textStyle="bold"></RadioButton>
 
         <RadioButton
             android:id="@+id/radioUnsure"
+            android:textColor="#47B3BF"
+            android:textSize="24sp"
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/radio_unsure"
-            android:textSize="24sp"></RadioButton>
+            android:text="@string/radio_unsure">
+        </RadioButton>
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/textComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_comments"
+        android:textColor="#47B3BF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
+
     <EditText
-        android:id="@+id/editTextComment"
-        android:layout_width="378dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:id="@+id/editTextComments"
+        android:layout_width="344dp"
+        android:layout_height="60dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textComment" />
+        app:layout_constraintTop_toBottomOf="@+id/textComment"
+        app:layout_constraintVertical_bias="0.082" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
