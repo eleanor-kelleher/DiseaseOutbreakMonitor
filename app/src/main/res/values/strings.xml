@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Epitrack</string>
     <string name="symptom_activity_title"> Patient Symptoms</string>
+    <string name="patient_details_title">Patient Details</string>
+    <string name="diagnosis_title">Health Worker Diagnosis</string>
     <string name="button_add_patient">Add new patient</string>
+    <string name="welcome_message">Welcome!</string>
     <string name="text_name">Name:</string>
     <string name="text_age">Age:</string>
     <string name="text_sex">Sex:</string>
@@ -12,6 +15,8 @@
     <string name="button_female">Female</string>
     <string name="button_undisclosed">Undisclosed</string>
     <string name="button_next">Next</string>
+    <string name="text_comment">Further Comments:</string>
+    <string name="button_new_patient">New Patient</string>
 
     <string name="radio_cholera">Cholera</string>
     <string name="radio_polio">Polio</string>
@@ -43,5 +48,5 @@
     <string name="checkbox_stomach_pain">Stomach Pain</string>
     <string name="checkbox_thirst">Thirst</string>
     <string name="checkbox_vomiting">Vomiting</string>
-    <string name="text_comment">Further Comments:</string>
+    <string name="hw_diagnosis_title">Health worker Diagnosis</string>
 </resources>

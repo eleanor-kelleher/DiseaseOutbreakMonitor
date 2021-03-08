@@ -6,20 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".DiagnosisActivity">
 
-    <TextView
-        android:id="@+id/healthWorkerDiagnosis"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#47B3BF"
-        android:text="Health Worker Diagnosis"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/button_next2"
         android:layout_width="119dp"

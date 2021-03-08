@@ -2,9 +2,11 @@ package GroupProject.Team8.DiseaseOutbreakMonitor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,11 +25,19 @@ public class PatientDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         long unixTime = System.currentTimeMillis() / 1000L;
         editTextAge = findViewById(R.id.edit_text_age);
         editTextTemperature = findViewById(R.id.edit_text_temperature);
         buttonMale = findViewById(R.id.button_male);
         buttonFemale = findViewById(R.id.button_female);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        return true;
     }
 
     public void setMale(View view) {

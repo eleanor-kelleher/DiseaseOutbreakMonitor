@@ -2,9 +2,11 @@ package GroupProject.Team8.DiseaseOutbreakMonitor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -27,8 +29,10 @@ public class DiagnosisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnosis);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         radioGroupDiseases = findViewById(R.id.radioGroupDiseases);
-        editTextComment = findViewById(R.id.editTextComment);
+        editTextComment = findViewById(R.id.editTextComments);
 
         Intent intent = getIntent();
         date = intent.getLongExtra("DATE", -1);
@@ -40,6 +44,15 @@ public class DiagnosisActivity extends AppCompatActivity {
         if (patientAge == -1) {
             Toast.makeText(DiagnosisActivity.this, "Error getting patient age. Please try again.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent intent = new Intent(getApplicationContext(), PatientDetailsActivity.class);
+        intent.putExtra("DATE", date);
+        intent.putExtra("PATIENT_AGE", patientAge);
+        intent.putExtra("PATIENT_SEX", patientSex);
+        startActivity(intent);
+        return true;
     }
 
     public void checkRadio(View view) {
