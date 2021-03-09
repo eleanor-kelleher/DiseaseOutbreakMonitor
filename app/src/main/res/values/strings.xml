@@ -37,7 +37,6 @@
     <string name="checkbox_leg_cramps">Leg Cramps</string>
     <string name="checkbox_loss_of_skin_elasticity">Loss of Skin Elasticity</string>
     <string name="checkbox_low_blood_pressure">Low Blood Pressure</string>
-    <string name="checkbox_meningitis">Meningitis</string>
     <string name="checkbox_nausea">Nausea</string>
     <string name="checkbox_paralysis">Paralyis</string>
     <string name="checkbox_Paresthesia">Paresthesia</string>
@@ -48,5 +47,7 @@
     <string name="checkbox_stomach_pain">Stomach Pain</string>
     <string name="checkbox_thirst">Thirst</string>
     <string name="checkbox_vomiting">Vomiting</string>
-    <string name="hw_diagnosis_title">Health worker Diagnosis</string>
+    <string name="hw_diagnosis_title">Health Worker Diagnosis</string>
+    <string name="confirm_activity_title">Confirm Details</string>
+    <string name="button_confirm">Confirm Details</string>
 </resources>

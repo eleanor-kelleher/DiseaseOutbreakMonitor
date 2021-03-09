@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseaseOutbreakMonitor">
+        <activity android:name=".ConfirmActivity"
+            android:label="@string/confirm_activity_title">
+        </activity>
         <activity
             android:name=".SymptomsActivity"
             android:label="@string/symptom_activity_title">
@@ -17,15 +20,14 @@
             android:name=".DiagnosisActivity"
             android:label="@string/hw_diagnosis_title">
         </activity>
-
         <activity
             android:name=".PatientDetailsActivity"
             android:label="@string/patient_details_title">
         </activity>
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
