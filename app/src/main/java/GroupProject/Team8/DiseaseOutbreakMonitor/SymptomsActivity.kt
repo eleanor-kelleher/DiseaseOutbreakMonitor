@@ -42,27 +42,40 @@ class SymptomsActivity : AppCompatActivity() {
     }
 
     /*
-        Call this at the end of the activity
+        Generates a Space Separated List of Symptoms From The Boxes Which Were Checked
+            ---> may need to change space seperated to comma seperated or etc.... (easy to do) depending on how we parse
+            ---> Currently 'Stomach Pain' would be seperated into 'Stomach' and 'Pain' if we just use spaces to seperate
+        Call This At The End of The Activity
      */
-    fun generateSymptomsString (): String {
-
+    // LEFT SOME PRINT STATEMENTS USING Log.i(), INCASE ANYONE WANTS TO SEE HOW IT WORKS/TEST IT
+    fun generateSymptomsString (): String
+    {
         val symptoms = Datasource().loadSymptoms()
-        var checkedSymptoms = checkBoxStateArray    // from ItemAdapter
-        val sb = StringBuilder()
-        val size = checkedSymptoms.size()
-        Log.i("size", size.toString())
-        var symptomName = ""
-        var i = 0
-        while (i < size)
+        var checkedSymptoms = checkBoxStateArray    // from ItemAdapter.kt
+
+        val keys = mutableListOf<Int>()
+        var x = 0
+        var y = 0
+        Log.i("Checkbox State Array", checkedSymptoms.toString())   // PRINT TO CONSOLE
+        // Get The Key Values of The Checked Boxes
+        while (x < symptoms.size)
         {
-            var isChecked = checkedSymptoms.get(i, false)
-            if (isChecked)
+            // IF box is checked THEN add key to list of keys
+            if (checkedSymptoms.get(x, false) == true)
             {
-                val symptom = symptoms.get(i)
-                symptomName = getString(symptom.stringResourceId)
+                keys.add(y, x)
+                y++
             }
-            sb.append(symptomName)
-            sb.append(" ")
+            x++
+        }
+        val sb = StringBuilder()
+        var i = 0
+        // Add Corresponding Symptom (from key) to the List of Symptoms
+        while (i < keys.size)
+        {
+            val symptomObject = symptoms.get(keys.get(i))
+            var symptomName = getString(symptomObject.stringResourceId)
+            sb.append("$symptomName ")  // appends symptom name + a space
             i++
         }
         return sb.toString()
@@ -70,7 +83,8 @@ class SymptomsActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        Log.i("printing", generateSymptomsString()) // print symptoms string to logcat console when back button is pressed
+        // USED THIS FOR TESTING ---- SO CHECK SOME BOXES, GO BACK TO PREVIOUS SCREEN, SEE RESULT IN LOGCAT CONSOLE
+        //Log.i("Symptoms String: ", generateSymptomsString()) // print symptoms string to logcat console when back button is pressed
         val intent = Intent(applicationContext, DiagnosisActivity::class.java)
         intent.putExtra("DATE", date)
         intent.putExtra("PATIENT_AGE", patientAge)
