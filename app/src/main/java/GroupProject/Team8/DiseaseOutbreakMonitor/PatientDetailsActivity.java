@@ -18,7 +18,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
     Button buttonMale, buttonFemale;
 
     String patientSex;
-    long unixTime;
+    int patientTemperature = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,6 @@ public class PatientDetailsActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        long unixTime = System.currentTimeMillis() / 1000L;
         editTextAge = findViewById(R.id.edit_text_age);
         editTextTemperature = findViewById(R.id.edit_text_temperature);
         buttonMale = findViewById(R.id.button_male);
@@ -49,6 +48,9 @@ public class PatientDetailsActivity extends AppCompatActivity {
     }
 
     public void confirmPatientDetails(View view) {
+
+        Intent intent = new Intent(this, DiagnosisActivity.class);
+
         if(TextUtils.isEmpty(editTextAge.getText())){
             Toast.makeText(PatientDetailsActivity.this, "Please enter an age.", Toast.LENGTH_SHORT).show();
             editTextAge.setError( "Age is required.");
@@ -59,15 +61,12 @@ public class PatientDetailsActivity extends AppCompatActivity {
         else {
             int patientAge = Integer.parseInt(editTextAge.getText().toString());
             if(!TextUtils.isEmpty(editTextTemperature.getText())){
-                int patientTemperature = Integer.parseInt(editTextTemperature.getText().toString());
+                patientTemperature = Integer.parseInt(editTextTemperature.getText().toString());
             }
-            Intent intent = new Intent(this, DiagnosisActivity.class);
-            intent.putExtra("DATE", unixTime);
             intent.putExtra("PATIENT_AGE", patientAge);
             intent.putExtra("PATIENT_SEX", patientSex);
+            intent.putExtra("TEMPERATURE_C", patientTemperature);
             startActivity(intent);
         }
-
-
     }
 }

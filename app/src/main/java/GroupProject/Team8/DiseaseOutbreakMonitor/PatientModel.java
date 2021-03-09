@@ -14,7 +14,7 @@ public class PatientModel {
     private float temperatureCelsius;
     private String disease;
     private String comment;
-    private ArrayList<String> symptoms;
+    private String symptoms;
 
     public PatientModel(long date, int age, String sex) {
         this.date = date;
@@ -97,17 +97,9 @@ public class PatientModel {
         this.comment = comment;
     }
 
-    public String getSymptoms() {
-        StringBuffer sb = new StringBuffer();
+    public String getSymptoms() { return symptoms; }
 
-        for (String s : symptoms) {
-            sb.append(s);
-            sb.append(" ");
-        }
-        return sb.toString();
-    }
-
-    public void addToSymptoms(String symptom) {
-        this.symptoms.add(symptom);
+    public void setSymptoms(String symptoms) {
+        this.symptoms = symptoms;
     }
 }

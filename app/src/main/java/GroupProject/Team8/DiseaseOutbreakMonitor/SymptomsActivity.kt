@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SymptomsActivity : AppCompatActivity() {
 
-    var date = 0L
     var patientAge = 0
     var patientSex = ""
+    var patientTemperature = 0
     var disease = ""
     var comment = ""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +26,9 @@ class SymptomsActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val intent = intent
-        date = intent.getLongExtra("DATE", -1)
         patientAge = intent.getIntExtra("PATIENT_AGE", -1)
         patientSex = intent.getStringExtra("PATIENT_SEX").toString()
+        patientTemperature = intent.getIntExtra("TEMPERATURE_C", -1)
         disease = intent.getStringExtra("HW_DIAGNOSIS").toString()
         comment = intent.getStringExtra("COMMENT").toString()
 
@@ -61,7 +61,7 @@ class SymptomsActivity : AppCompatActivity() {
         while (x < symptoms.size)
         {
             // IF box is checked THEN add key to list of keys
-            if (checkedSymptoms.get(x, false) == true)
+            if (checkedSymptoms.get(x, false))
             {
                 keys.add(y, x)
                 y++
@@ -86,9 +86,9 @@ class SymptomsActivity : AppCompatActivity() {
         // USED THIS FOR TESTING ---- SO CHECK SOME BOXES, GO BACK TO PREVIOUS SCREEN, SEE RESULT IN LOGCAT CONSOLE
         //Log.i("Symptoms String: ", generateSymptomsString()) // print symptoms string to logcat console when back button is pressed
         val intent = Intent(applicationContext, DiagnosisActivity::class.java)
-        intent.putExtra("DATE", date)
         intent.putExtra("PATIENT_AGE", patientAge)
         intent.putExtra("PATIENT_SEX", patientSex)
+        intent.putExtra("TEMPERATURE_C", patientTemperature)
         intent.putExtra("HW_DIAGNOSIS", disease)
         intent.putExtra("COMMENT", comment)
         startActivity(intent)

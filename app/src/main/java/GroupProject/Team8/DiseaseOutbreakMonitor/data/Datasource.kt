@@ -22,17 +22,16 @@ class Datasource
                 Symptom(R.string.checkbox_leg_cramps, R.drawable.img11),
                 Symptom(R.string.checkbox_loss_of_skin_elasticity, R.drawable.img12),
                 Symptom(R.string.checkbox_low_blood_pressure, R.drawable.img13),
-                Symptom(R.string.checkbox_meningitis, R.drawable.img14),
-                Symptom(R.string.checkbox_nausea, R.drawable.img15),
-                Symptom(R.string.checkbox_paralysis, R.drawable.img16),
-                Symptom(R.string.checkbox_Paresthesia, R.drawable.img17),
-                Symptom(R.string.checkbox_rapid_heart_rate, R.drawable.img18),
-                Symptom(R.string.checkbox_rash, R.drawable.img19),
-                Symptom(R.string.checkbox_restlessness, R.drawable.img20),
-                Symptom(R.string.checkbox_sore_throat, R.drawable.img21),
-                Symptom(R.string.checkbox_stomach_pain, R.drawable.img22),
-                Symptom(R.string.checkbox_thirst, R.drawable.img23),
-                Symptom(R.string.checkbox_vomiting, R.drawable.img24)
+                Symptom(R.string.checkbox_nausea, R.drawable.img14),
+                Symptom(R.string.checkbox_paralysis, R.drawable.img15),
+                Symptom(R.string.checkbox_Paresthesia, R.drawable.img16),
+                Symptom(R.string.checkbox_rapid_heart_rate, R.drawable.img17),
+                Symptom(R.string.checkbox_rash, R.drawable.img18),
+                Symptom(R.string.checkbox_restlessness, R.drawable.img19),
+                Symptom(R.string.checkbox_sore_throat, R.drawable.img20),
+                Symptom(R.string.checkbox_stomach_pain, R.drawable.img21),
+                Symptom(R.string.checkbox_thirst, R.drawable.img22),
+                Symptom(R.string.checkbox_vomiting, R.drawable.img23)
         )
     }
 }

@@ -18,11 +18,8 @@ public class DiagnosisActivity extends AppCompatActivity {
     RadioGroup radioGroupDiseases;
     RadioButton radioButton;
     EditText editTextComment;
-    long date;
-    int patientAge;
-    String patientSex;
-    String comment = "";
-    String disease;
+    int patientAge, patientTemperature;
+    String patientSex, comment, disease;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +32,9 @@ public class DiagnosisActivity extends AppCompatActivity {
         editTextComment = findViewById(R.id.editTextComments);
 
         Intent intent = getIntent();
-        date = intent.getLongExtra("DATE", -1);
         patientAge = intent.getIntExtra("PATIENT_AGE", -1);
         patientSex = intent.getStringExtra("PATIENT_SEX");
-        if(date == -1) {
-            Toast.makeText(DiagnosisActivity.this, "Error getting date. Please try again.", Toast.LENGTH_LONG).show();
-        }
+        patientTemperature = intent.getIntExtra("TEMPERATURE_C", -1);
         if (patientAge == -1) {
             Toast.makeText(DiagnosisActivity.this, "Error getting patient age. Please try again.", Toast.LENGTH_LONG).show();
         }
@@ -48,9 +42,9 @@ public class DiagnosisActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(getApplicationContext(), PatientDetailsActivity.class);
-        intent.putExtra("DATE", date);
         intent.putExtra("PATIENT_AGE", patientAge);
         intent.putExtra("PATIENT_SEX", patientSex);
+        intent.putExtra("TEMPERATURE_C", patientTemperature);
         startActivity(intent);
         return true;
     }
@@ -67,9 +61,9 @@ public class DiagnosisActivity extends AppCompatActivity {
             comment = editTextComment.getText().toString();
         }
         Intent intent = new Intent(this, SymptomsActivity.class);
-        intent.putExtra("DATE", date);
         intent.putExtra("PATIENT_AGE", patientAge);
         intent.putExtra("PATIENT_SEX", patientSex);
+        intent.putExtra("TEMPERATURE_C", patientTemperature);
         intent.putExtra("HW_DIAGNOSIS", disease);
         intent.putExtra("COMMENT", comment);
         startActivity(intent);
