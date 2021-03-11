@@ -1,12 +1,10 @@
 package GroupProject.Team8.DiseaseOutbreakMonitor;
 
-import java.util.ArrayList;
-
 public class PatientModel {
 
     private int id;
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
     private long date;
 
     private int age;
@@ -33,19 +31,19 @@ public class PatientModel {
         this.id = id;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
