@@ -25,9 +25,9 @@
 
     // symptoms in alphabetical order
     <string name="checkbox_conjunctivitis">Conjunctivitis</string>
-    <string name="checkbox_runny_nose">Runny Nose</string>
     <string name="checkbox_cough">Cough</string>
     <string name="checkbox_dehydration">Dehydration</string>
+    <string name="checkbox_Diarrhea">Diarrhea</string>
     <string name="checkbox_dry_mucous_membranes">Dry Mucous Membranes</string>
     <string name="checkbox_fatigue">Fatigue</string>
     <string name="checkbox_fever">Fever</string>
@@ -43,6 +43,7 @@
     <string name="checkbox_rapid_heart_rate">Rapid Heart Rate</string>
     <string name="checkbox_rash">Rash</string>
     <string name="checkbox_restlessness">Restlessness</string>
+    <string name="checkbox_runny_nose">Runny Nose</string>
     <string name="checkbox_sore_throat">Sore Throat</string>
     <string name="checkbox_stomach_pain">Stomach Pain</string>
     <string name="checkbox_thirst">Thirst</string>
