@@ -6,18 +6,18 @@ import GroupProject.Team8.DiseaseOutbreakMonitor.adapter.checkBoxStateArray
 import GroupProject.Team8.DiseaseOutbreakMonitor.data.Datasource
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class SymptomsActivity : AppCompatActivity() {
 
-    var patientAge = 0
-    var patientSex = ""
-    var patientTemperature = 0
+    var age = 0
+    var sex = ""
+    var temperature = 0.0
+    var bloodPressureSystolic = 0
+    var bloodPressureDiastolic = 0
     var disease = ""
     var comment = ""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +28,14 @@ class SymptomsActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val intent = intent
-        patientAge = intent.getIntExtra("PATIENT_AGE", -1)
-        patientSex = intent.getStringExtra("PATIENT_SEX").toString()
-        patientTemperature = intent.getIntExtra("TEMPERATURE_C", -1)
-        disease = intent.getStringExtra("HW_DIAGNOSIS").toString()
-        comment = intent.getStringExtra("COMMENT").toString()
+        age = intent.getIntExtra(Constants.AGE, -1)
+        sex = intent.getStringExtra(Constants.SEX).toString()
+
+        // blood pressure is read as Systolic over Diastolic, e.g. 132/88 mmHg
+        // High blood pressure: systolic over 140 mmHg and/or diastolic over 90 mmHg
+        bloodPressureSystolic = intent.getIntExtra(Constants.BP_SYSTOLIC, -1)
+        bloodPressureDiastolic = intent.getIntExtra(Constants.BP_DIASTOLIC, -1)
+        temperature = intent.getDoubleExtra(Constants.TEMP, -1.0)
 
         // Initialise data
         val myDataset = Datasource().loadSymptoms()
@@ -87,24 +90,24 @@ class SymptomsActivity : AppCompatActivity() {
 
         // USED THIS FOR TESTING ---- SO CHECK SOME BOXES, GO BACK TO PREVIOUS SCREEN, SEE RESULT IN LOGCAT CONSOLE
         //Log.i("Symptoms String: ", generateSymptomsString()) // print symptoms string to logcat console when back button is pressed
-        val intent = Intent(applicationContext, DiagnosisActivity::class.java)
-        intent.putExtra("PATIENT_AGE", patientAge)
-        intent.putExtra("PATIENT_SEX", patientSex)
-        intent.putExtra("TEMPERATURE_C", patientTemperature)
-        intent.putExtra("HW_DIAGNOSIS", disease)
-        intent.putExtra("COMMENT", comment)
+        val intent = Intent(applicationContext, TemperatureAndBPActivity::class.java)
+        intent.putExtra(Constants.AGE, age)
+        intent.putExtra(Constants.SEX, sex)
+        intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic)
+        intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic)
+        intent.putExtra(Constants.TEMP, temperature)
         startActivity(intent)
         return true
     }
 
     fun confirmSymptoms(view: View) {
-        val intent = Intent(this, ConfirmActivity::class.java)
-        intent.putExtra("PATIENT_AGE", patientAge)
-        intent.putExtra("PATIENT_SEX", patientSex)
-        intent.putExtra("TEMPERATURE_C", patientTemperature)
-        intent.putExtra("HW_DIAGNOSIS", disease)
-        intent.putExtra("COMMENT", comment)
-        intent.putExtra("SYMPTOMS", generateSymptomsString())
+        val intent = Intent(this, DiagnosisActivity::class.java)
+        intent.putExtra(Constants.AGE, age)
+        intent.putExtra(Constants.SEX, sex)
+        intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic)
+        intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic)
+        intent.putExtra(Constants.TEMP, temperature)
+        intent.putExtra(Constants.SYMPTOMS, generateSymptomsString())
         startActivity(intent)
     }
 

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TemperatureAndBPActivity">
+
+    <TextView
+        android:id="@+id/textTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/text_temperature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextBloodPressureSystolic"
+        android:layout_width="67dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/textBloodPressure"
+        app:layout_constraintEnd_toStartOf="@+id/textSlash"
+        app:layout_constraintStart_toEndOf="@+id/textBloodPressure" />
+
+    <EditText
+        android:id="@+id/editTextBloodPressureDiastolic"
+        android:layout_width="77dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextBloodPressureSystolic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textSlash"
+        app:layout_constraintTop_toTopOf="@+id/editTextBloodPressureSystolic" />
+
+    <TextView
+        android:id="@+id/textSlash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/text_slash"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextBloodPressureSystolic"
+        app:layout_constraintEnd_toStartOf="@+id/editTextBloodPressureDiastolic"
+        app:layout_constraintStart_toEndOf="@+id/editTextBloodPressureSystolic"
+        app:layout_constraintTop_toTopOf="@+id/editTextBloodPressureSystolic" />
+
+    <EditText
+        android:id="@+id/editTextTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/textTemperature"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textTemperature" />
+
+    <TextView
+        android:id="@+id/textBloodPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/text_blood_pressure"
+        app:layout_constraintStart_toStartOf="@+id/textTemperature"
+        app:layout_constraintTop_toBottomOf="@+id/textTemperature" />
+
+    <Button
+        android:id="@+id/buttonTempAndBPNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="confirmTempAndBP"
+        android:text="@string/button_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

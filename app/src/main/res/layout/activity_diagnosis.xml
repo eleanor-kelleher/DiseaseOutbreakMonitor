@@ -7,7 +7,7 @@
     tools:context=".DiagnosisActivity">
 
     <Button
-        android:id="@+id/button_next2"
+        android:id="@+id/buttonNext2"
         android:layout_width="119dp"
         android:layout_height="61dp"
         android:layout_marginEnd="32dp"

@@ -8,39 +8,6 @@
 
     <!-- Correct? inputType below -->
 
-    <TextView
-        android:id="@+id/textName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/text_name"
-        android:textColor="#47B3BF"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/edit_text_name"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edit_text_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:ems="10"
-        android:inputType="text"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textName" />
-
 
     <TextView
         android:id="@+id/textAge"
@@ -48,35 +15,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:text="@string/text_age"
         android:textColor="#47B3BF"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/edit_text_age"
+        app:layout_constraintEnd_toStartOf="@+id/editTextAge"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/textName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
-        android:id="@+id/edit_text_age"
+        android:id="@+id/editTextAge"
         android:layout_width="245dp"
         android:layout_height="53dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:ems="10"
         android:inputType="number"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textAge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textAge"
-        app:layout_constraintStart_toStartOf="@id/edit_text_name" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textSex"
@@ -90,11 +52,11 @@
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_age"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAge"
         app:layout_constraintTop_toTopOf="@id/textAge" />
 
     <Button
-        android:id="@+id/button_male"
+        android:id="@+id/buttonMale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -108,10 +70,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/textSex"
-        app:layout_constraintTop_toBottomOf="@id/edit_text_age"/>
+        app:layout_constraintTop_toBottomOf="@id/editTextAge"/>
 
     <Button
-        android:id="@+id/button_female"
+        android:id="@+id/buttonFemale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -125,54 +87,24 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/textSex"
-        app:layout_constraintTop_toBottomOf="@+id/button_male" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonMale" />
 
     <Button
-        android:id="@+id/button_undisclosed"
+        android:id="@+id/buttonUndisclosed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="#47B3BF"
-        android:onClick="setFemale"
+        android:onClick="setUndisclosed"
         android:text="@string/button_undisclosed"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/textSex"
-        app:layout_constraintTop_toBottomOf="@+id/button_female" />
-
-    <TextView
-        android:id="@+id/textTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="180dp"
-        android:text="@string/text_temperature"
-        android:textColor="#47B3BF"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSex" />
-
-    <EditText
-        android:id="@+id/edit_text_temperature"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textTemp"
-        app:layout_constraintTop_toTopOf="@+id/textTemp" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonFemale" />
 
     <!-- Correct? inputType below -->
 
@@ -244,7 +176,7 @@
  -->
 
     <Button
-        android:id="@+id/button_next2"
+        android:id="@+id/buttonNext2"
         android:layout_width="119dp"
         android:layout_height="61dp"
         android:layout_marginEnd="32dp"

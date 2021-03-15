@@ -11,7 +11,9 @@ public class PatientModel {
 
     private int age;
     private String sex;
-    private float temperatureCelsius;
+    private double temperatureCelsius;
+    private int bloodPressureSystolic;
+    private int bloodPressureDiastolic;
     private String disease;
     private String comment;
     private String symptoms;
@@ -73,12 +75,28 @@ public class PatientModel {
         this.sex = sex;
     }
 
-    public float getTemperatureCelsius() {
+    public double getTemperatureCelsius() {
         return temperatureCelsius;
     }
 
-    public void setTemperatureCelsius(float temperatureCelsius) {
+    public void setTemperatureCelsius(double temperatureCelsius) {
         this.temperatureCelsius = temperatureCelsius;
+    }
+
+    public int getBloodPressureSystolic() {
+        return bloodPressureSystolic;
+    }
+
+    public void setBloodPressureSystolic(int bloodPressureSystolic) {
+        this.bloodPressureSystolic = bloodPressureSystolic;
+    }
+
+    public int getBloodPressureDiastolic() {
+        return bloodPressureDiastolic;
+    }
+
+    public void setBloodPressureDiastolic(int bloodPressureDiastolic) {
+        this.bloodPressureDiastolic = bloodPressureDiastolic;
     }
 
     public String getDisease() {

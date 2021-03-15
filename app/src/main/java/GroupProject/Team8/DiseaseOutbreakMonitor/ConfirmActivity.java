@@ -11,6 +11,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -34,28 +35,44 @@ public class ConfirmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // Unix time
         date = System.currentTimeMillis() / 1000L;
 
         Intent intent = getIntent();
-        patient.setAge(intent.getIntExtra("PATIENT_AGE", -1));
-        patient.setSex(intent.getStringExtra("PATIENT_SEX"));
-        patient.setTemperatureCelsius(intent.getIntExtra("TEMPERATURE_C", -1));
-        patient.setDisease(intent.getStringExtra("HW_DIAGNOSIS"));
-        patient.setComment(intent.getStringExtra("COMMENT"));
-        patient.setSymptoms(intent.getStringExtra("SYMPTOMS"));
+        patient.setAge(intent.getIntExtra(Constants.AGE, -1));
+        patient.setSex(intent.getStringExtra(Constants.SEX));
+        patient.setTemperatureCelsius(intent.getDoubleExtra(Constants.TEMP, -1));
+        patient.setBloodPressureSystolic(intent.getIntExtra(Constants.BP_SYSTOLIC, -1));
+        patient.setBloodPressureDiastolic(intent.getIntExtra(Constants.BP_DIASTOLIC, -1));
+        patient.setDisease(intent.getStringExtra(Constants.HW_DIAGNOSIS));
+        patient.setComment(intent.getStringExtra(Constants.COMMENT));
+        patient.setSymptoms(intent.getStringExtra(Constants.SYMPTOMS));
 
         patient.setDate(date);
 
         patient.printPatientDetails();
 
-        // locationRequest.setInterval(30000);
-        // locationRequest.setFastestInterval(5000);
+        locationRequest.setInterval(30000);
+        locationRequest.setFastestInterval(5000);
 
         // --------- NULL POINTER EXCEPTION HERE ---------
-        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        //locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
 
         updateGPS();
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent intent = new Intent(getApplicationContext(), SymptomsActivity.class);
+        intent.putExtra(Constants.AGE, patient.getAge());
+        intent.putExtra(Constants.SEX, patient.getSex());
+        intent.putExtra(Constants.BP_SYSTOLIC, patient.getBloodPressureSystolic());
+        intent.putExtra(Constants.BP_DIASTOLIC, patient.getBloodPressureDiastolic());
+        intent.putExtra(Constants.SYMPTOMS, patient.getSymptoms());
+        intent.putExtra(Constants.TEMP, patient.getTemperatureCelsius());
+        startActivity(intent);
+        return true;
     }
 
     @Override
