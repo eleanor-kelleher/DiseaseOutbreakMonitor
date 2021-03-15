@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -46,8 +47,12 @@ public class ConfirmActivity extends AppCompatActivity {
 
         patient.setDate(date);
 
+        patient.printPatientDetails();
+
         // locationRequest.setInterval(30000);
         // locationRequest.setFastestInterval(5000);
+
+        // --------- NULL POINTER EXCEPTION HERE ---------
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
 
         updateGPS();
