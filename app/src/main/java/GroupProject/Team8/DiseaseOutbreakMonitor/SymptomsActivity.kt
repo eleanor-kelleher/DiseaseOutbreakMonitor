@@ -56,7 +56,7 @@ class SymptomsActivity : AppCompatActivity() {
         val keys = mutableListOf<Int>()
         var x = 0
         var y = 0
-        Log.i("Checkbox State Array", checkedSymptoms.toString())   // PRINT TO CONSOLE
+        //Log.i("Checkbox State Array", checkedSymptoms.toString())   // PRINT TO CONSOLE
         // Get The Key Values of The Checked Boxes
         while (x < symptoms.size)
         {
@@ -75,9 +75,13 @@ class SymptomsActivity : AppCompatActivity() {
         {
             val symptomObject = symptoms.get(keys.get(i))
             var symptomName = getString(symptomObject.stringResourceId)
-            sb.append("$symptomName ")  // appends symptom name + a space
+            sb.append("$symptomName,")  // appends symptom name + a space
             i++
         }
+        // remove comma at end of string
+        var length = sb.length
+        if (length > 0)
+            sb.deleteCharAt(length - 1)
         return sb.toString()
     }
 
