@@ -1,5 +1,7 @@
 package GroupProject.Team8.DiseaseOutbreakMonitor;
 
+import android.util.Log;
+
 public class PatientModel {
 
     private int id;
@@ -100,4 +102,16 @@ public class PatientModel {
     public void setSymptoms(String symptoms) {
         this.symptoms = symptoms;
     }
+
+    // Used this to test if patient details are correct at the confirmation activity (THEY ARE :) )
+    public void printPatientDetails()
+    {
+        Log.i("Age:  ", String.valueOf(this.getAge()));
+        Log.i("Sex: ", this.getSex());
+        Log.i("Temperature", String.valueOf(this.getTemperatureCelsius()));
+        Log.i("Disease: ", this.getDisease());
+        Log.i("Comment: ", this.getComment());
+        Log.i("Symptoms: ", this.getSymptoms());
+    }
+
 }
