@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class PatientDetailsActivity extends AppCompatActivity {
 
-    EditText editTextAge, editTextTemperature;
+    EditText editTextAge;
     Button buttonMale, buttonFemale;
 
     int age;

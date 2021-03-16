@@ -15,6 +15,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
     EditText editTextTemperature, editTextBloodPressureSystolic, editTextBloodPressureDiastolic;
     double temperature;
     int age, bloodPressureSystolic, bloodPressureDiastolic;
+    boolean tempFilled, bpSystolicFilled, bpDiastolicFilled = false;
     String sex;
 
     @Override
@@ -48,16 +49,21 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(editTextTemperature.getText())){
             Toast.makeText(TemperatureAndBPActivity.this, "Please enter a number.", Toast.LENGTH_SHORT).show();
             editTextTemperature.setError( "A number is required.");
-        }
-        else if(TextUtils.isEmpty(editTextBloodPressureSystolic.getText())){
+            tempFilled = false;
+        } else { tempFilled = true; }
+
+        if(TextUtils.isEmpty(editTextBloodPressureSystolic.getText())){
             Toast.makeText(TemperatureAndBPActivity.this, "Please enter a number.", Toast.LENGTH_SHORT).show();
             editTextBloodPressureSystolic.setError( "A number is required.");
-        }
-        else if(TextUtils.isEmpty(editTextBloodPressureDiastolic.getText())){
+            bpSystolicFilled = false;
+        } else { bpSystolicFilled = true; }
+
+        if(TextUtils.isEmpty(editTextBloodPressureDiastolic.getText())){
             Toast.makeText(TemperatureAndBPActivity.this, "Please enter a number.", Toast.LENGTH_SHORT).show();
             editTextBloodPressureDiastolic.setError( "A number is required.");
-        }
-        else {
+            bpDiastolicFilled = false;
+        } else { bpDiastolicFilled = true; }
+        if(tempFilled && bpSystolicFilled && bpDiastolicFilled) {
             temperature = Double.parseDouble(editTextTemperature.getText().toString());
             bloodPressureSystolic = Integer.parseInt(editTextBloodPressureSystolic.getText().toString());
             bloodPressureDiastolic = Integer.parseInt(editTextBloodPressureDiastolic.getText().toString());

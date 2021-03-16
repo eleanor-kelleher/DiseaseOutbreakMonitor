@@ -47,12 +47,15 @@ public class ConfirmActivity extends AppCompatActivity {
         patient.setBloodPressureSystolic(intent.getIntExtra(Constants.BP_SYSTOLIC, -1));
         patient.setBloodPressureDiastolic(intent.getIntExtra(Constants.BP_DIASTOLIC, -1));
         patient.setDisease(intent.getStringExtra(Constants.HW_DIAGNOSIS));
-        patient.setComment(intent.getStringExtra(Constants.COMMENT));
         patient.setSymptoms(intent.getStringExtra(Constants.SYMPTOMS));
+        if(intent.getStringExtra(Constants.COMMENT) == null) {
+            patient.setComment("");
+        }
+        else {
+            patient.setComment(intent.getStringExtra(Constants.COMMENT));
+        }
 
         patient.setDate(date);
-
-        patient.printPatientDetails();
 
         locationRequest.setInterval(30000);
         locationRequest.setFastestInterval(5000);

@@ -108,7 +108,8 @@ public class PatientModel {
     }
 
     public String getComment() {
-        return comment;
+        if (comment == null) { return ""; }
+        else {return comment; }
     }
 
     public void setComment(String comment) {

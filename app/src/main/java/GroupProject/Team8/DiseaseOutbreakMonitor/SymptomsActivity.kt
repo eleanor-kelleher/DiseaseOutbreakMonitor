@@ -18,8 +18,7 @@ class SymptomsActivity : AppCompatActivity() {
     var temperature = 0.0
     var bloodPressureSystolic = 0
     var bloodPressureDiastolic = 0
-    var disease = ""
-    var comment = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTitle(R.string.symptom_activity_title)
