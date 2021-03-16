@@ -6,10 +6,15 @@ import GroupProject.Team8.DiseaseOutbreakMonitor.adapter.checkBoxStateArray
 import GroupProject.Team8.DiseaseOutbreakMonitor.data.Datasource
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+
+val HIGH_SYSTOLIC_BP_LOWER_BOUND = 140
+val HIGH_DIASTOLIC_BP_LOWER_BOUND = 90
+val HIGH_TEMPERATURE_LOWER_BOUND = 38
 
 class SymptomsActivity : AppCompatActivity() {
 
@@ -70,25 +75,31 @@ class SymptomsActivity : AppCompatActivity() {
             x++
         }
         val sb = StringBuilder()
+        // Add Corresponding Symptom (by key) to the List of Symptoms
         var i = 0
-        // Add Corresponding Symptom (from key) to the List of Symptoms
         while (i < keys.size) {
             val symptomObject = symptoms.get(keys.get(i))
             var symptomName = getString(symptomObject.stringResourceId)
-            sb.append("$symptomName,")  // appends symptom name + a space
+            sb.append("$symptomName,")  // appends symptom name + a comma
             i++
         }
+        if ( (this.bloodPressureSystolic > HIGH_SYSTOLIC_BP_LOWER_BOUND) || ( this.bloodPressureDiastolic > HIGH_DIASTOLIC_BP_LOWER_BOUND) )
+            sb.append("High Blood Pressure,")
+        if (this.temperature > HIGH_TEMPERATURE_LOWER_BOUND)
+            sb.append("Fever,")
+
         // remove comma at end of string
         var length = sb.length
         if (length > 0)
             sb.deleteCharAt(length - 1)
+
         return sb.toString()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        // USED THIS FOR TESTING ---- SO CHECK SOME BOXES, GO BACK TO PREVIOUS SCREEN, SEE RESULT IN LOGCAT CONSOLE
-        //Log.i("Symptoms String: ", generateSymptomsString()) // print symptoms string to logcat console when back button is pressed
+        // USED THIS FOR TESTING ---- CHECK SOME BOXES, GO BACK TO PREVIOUS SCREEN, SEE RESULT IN LOGCAT CONSOLE
+        //Log.i("Symptoms String: ", generateSymptomsString())
         val intent = Intent(applicationContext, TemperatureAndBPActivity::class.java)
         intent.putExtra(Constants.AGE, age)
         intent.putExtra(Constants.SEX, sex)

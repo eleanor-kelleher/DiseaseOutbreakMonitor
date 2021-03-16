@@ -14,7 +14,6 @@ class Datasource
                 Symptom(R.string.checkbox_Diarrhea, R.drawable.diarrhea),
                 Symptom(R.string.checkbox_dry_mucous_membranes, R.drawable.dry_mucous_membranes),
                 Symptom(R.string.checkbox_fatigue, R.drawable.tiredness),
-                Symptom(R.string.checkbox_fever, R.drawable.fever),
                 Symptom(R.string.checkbox_headache, R.drawable.headache),
                 Symptom(R.string.checkbox_koplik_spots, R.drawable.koplik_spots),
                 Symptom(R.string.checkbox_leg_cramps, R.drawable.leg_cramps),
