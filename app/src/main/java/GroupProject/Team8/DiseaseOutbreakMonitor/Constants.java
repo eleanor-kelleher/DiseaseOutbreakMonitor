@@ -9,4 +9,9 @@ public class Constants {
     public final static String SYMPTOMS = "SYMPTOMS";
     public final static String HW_DIAGNOSIS = "HW_DIAGNOSIS";
     public final static String COMMENT = "COMMENT";
+
+    public final static String CHOLERA = "cholera";
+    public final static String MEASLES = "measles";
+    public final static String POLIO = "polio";
+    public final static String UNSURE = "unsure";
 }

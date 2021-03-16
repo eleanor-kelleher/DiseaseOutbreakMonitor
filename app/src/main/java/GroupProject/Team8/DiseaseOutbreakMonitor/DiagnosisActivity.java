@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class DiagnosisActivity extends AppCompatActivity {
 
     RadioGroup radioGroupDiseases;
-    RadioButton radioButton;
+    RadioButton radioCholera, radioPolio, radioMeasles, radioUnsure;
     EditText editTextComment;
     int age, bloodPressureSystolic, bloodPressureDiastolic;
     double temperature;
@@ -29,6 +29,10 @@ public class DiagnosisActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         radioGroupDiseases = findViewById(R.id.radioGroupDiseases);
+        radioCholera = findViewById(R.id.radioCholera);
+        radioPolio = findViewById(R.id.radioPolio);
+        radioMeasles = findViewById(R.id.radioMeasles);
+        radioUnsure = findViewById(R.id.radioUnsure);
         editTextComment = findViewById(R.id.editTextComments);
 
         Intent intent = getIntent();
@@ -60,17 +64,24 @@ public class DiagnosisActivity extends AppCompatActivity {
         return true;
     }
 
-    public void checkRadio(View view) {
-        //fix this
-        int radioId = radioGroupDiseases.getCheckedRadioButtonId();
-        Toast.makeText(DiagnosisActivity.this, "" + radioId, Toast.LENGTH_SHORT).show();
-        radioButton = findViewById(radioId);
-    }
-
     public void confirmDiagnosis(View view) {
         if(!TextUtils.isEmpty(editTextComment.getText())){
             comment = editTextComment.getText().toString();
         }
+
+        if (radioCholera.isChecked()) {
+            disease = Constants.CHOLERA;
+        }
+        else if (radioMeasles.isChecked()) {
+            disease = Constants.MEASLES;
+        }
+        else if (radioPolio.isChecked()) {
+            disease = Constants.POLIO;
+        }
+        else {
+            disease = Constants.UNSURE;
+        }
+
         Intent intent = new Intent(this, ConfirmActivity.class);
         intent.putExtra(Constants.AGE, age);
         intent.putExtra(Constants.SEX, sex);
