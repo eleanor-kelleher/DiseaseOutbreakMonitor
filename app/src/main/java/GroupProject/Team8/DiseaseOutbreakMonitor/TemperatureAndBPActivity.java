@@ -35,7 +35,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent intent = new Intent(getApplicationContext(), SymptomsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), PatientDetailsActivity.class);
         intent.putExtra(Constants.AGE, age);
         intent.putExtra(Constants.SEX, sex);
         intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);
