@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseaseOutbreakMonitor">
         <activity android:name=".TemperatureAndBPActivity"></activity>
+        <activity android:name=".NewPatientActivity"></activity>
         <activity
             android:name=".ConfirmActivity"
             android:label="@string/confirm_activity_title"></activity>
@@ -26,6 +27,8 @@
         <activity
             android:name=".PatientDetailsActivity"
             android:label="@string/patient_details_title"></activity>
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

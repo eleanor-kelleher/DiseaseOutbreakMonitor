@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Epitrack</string>
-    <string name="symptom_activity_title"> Patient Symptoms</string>
+    <string name="login_activity_title">Health Worker Sign in</string>
+    <string name="symptom_activity_title">Patient Symptoms</string>
     <string name="patient_details_title">Patient Details</string>
     <string name="diagnosis_title">Health Worker Diagnosis</string>
     <string name="button_add_patient">Add new patient</string>
@@ -48,9 +49,13 @@
     <string name="checkbox_stomach_pain">Stomach Pain</string>
     <string name="checkbox_thirst">Thirst</string>
     <string name="checkbox_vomiting">Vomiting</string>
+
     <string name="hw_diagnosis_title">Health Worker Diagnosis</string>
     <string name="confirm_activity_title">Confirm Details</string>
     <string name="button_confirm">Confirm Details</string>
+    <string name="button_sign_in">Sign in</string>
     <string name="text_slash">/</string>
     <string name="text_blood_pressure">Blood Pressure (mmHg)</string>
+    <string name="user_id_login">User ID:</string>
+    <string name="password_login">Password:</string>
 </resources>
