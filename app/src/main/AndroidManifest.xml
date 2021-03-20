@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseaseOutbreakMonitor">
         <activity android:name=".TemperatureAndBPActivity"></activity>
-        <activity android:name=".NewPatientActivity"></activity>
+        <activity android:name=".SignInActivity"></activity>
         <activity
             android:name=".ConfirmActivity"
             android:label="@string/confirm_activity_title"></activity>

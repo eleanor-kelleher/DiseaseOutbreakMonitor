@@ -10,7 +10,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -114,7 +113,7 @@ public class ConfirmActivity extends AppCompatActivity {
     public void addToDatabase(View view) {
         DatabaseHelper dbHelper = new DatabaseHelper(ConfirmActivity.this);
         if(dbHelper.addOne(patient)) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
             startActivity(intent);
         }
         else {

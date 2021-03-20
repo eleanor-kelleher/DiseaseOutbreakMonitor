@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Epitrack</string>
-    <string name="login_activity_title">Health Worker Sign in</string>
+    <string name="sign_in_activity_title">Health Worker Sign in</string>
     <string name="symptom_activity_title">Patient Symptoms</string>
     <string name="patient_details_title">Patient Details</string>
     <string name="diagnosis_title">Health Worker Diagnosis</string>
@@ -56,6 +56,6 @@
     <string name="button_sign_in">Sign in</string>
     <string name="text_slash">/</string>
     <string name="text_blood_pressure">Blood Pressure (mmHg)</string>
-    <string name="user_id_login">User ID:</string>
-    <string name="password_login">Password:</string>
+    <string name="user_id_sign_in">User ID:</string>
+    <string name="password_sign_in">Password:</string>
 </resources>
