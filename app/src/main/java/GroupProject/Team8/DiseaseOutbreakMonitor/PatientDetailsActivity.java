@@ -16,23 +16,56 @@ public class PatientDetailsActivity extends AppCompatActivity {
     EditText editTextAge;
     Button buttonMale, buttonFemale;
 
-    int age;
+    int age, bloodPressureSystolic, bloodPressureDiastolic;
     String sex;
+    double temperature;
+
+    /*
+        patient.setAge(intent.getIntExtra(Constants.AGE, -1));
+        patient.setSex(intent.getStringExtra(Constants.SEX));
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_details);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         editTextAge = findViewById(R.id.editTextAge);
         buttonMale = findViewById(R.id.buttonMale);
         buttonFemale = findViewById(R.id.buttonFemale);
+
+        Intent intent = getIntent();
+        if (intent.getExtras() != null){
+            if (intent.getIntExtra(Constants.AGE, -1) != -1){
+                editTextAge.setText(Integer.toString(intent.getIntExtra(Constants.AGE, -1)));
+            }
+            if (intent.getStringExtra(Constants.SEX) != null){
+                sex = intent.getStringExtra(Constants.SEX);
+            }
+            if (intent.getIntExtra(Constants.BP_SYSTOLIC, -1) != -1){
+                bloodPressureSystolic = intent.getIntExtra(Constants.BP_SYSTOLIC, -1);
+            }
+            if (intent.getIntExtra(Constants.BP_DIASTOLIC, -1) != -1){
+                bloodPressureDiastolic = intent.getIntExtra(Constants.BP_DIASTOLIC, -1);
+            }
+            if (intent.getDoubleExtra(Constants.TEMP, -1.0) != -1.0){
+                temperature = intent.getDoubleExtra(Constants.TEMP, -1.0);
+            }
+        }
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+        if (!TextUtils.isEmpty(editTextAge.getText())) {
+            age = Integer.parseInt(editTextAge.getText().toString());
+            intent.putExtra(Constants.AGE, age);
+        }
+        if (sex != null && !sex.isEmpty()) {
+            intent.putExtra(Constants.SEX, sex);
+        }
+
         startActivity(intent);
         return true;
     }
@@ -58,6 +91,15 @@ public class PatientDetailsActivity extends AppCompatActivity {
             age = Integer.parseInt(editTextAge.getText().toString());
             intent.putExtra(Constants.AGE, age);
             intent.putExtra(Constants.SEX, sex);
+            if ( bloodPressureSystolic > 0) {
+                intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);
+            }
+            if ( bloodPressureDiastolic > 0) {
+                intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic);
+            }
+            if (temperature > 0.0) {
+                intent.putExtra(Constants.TEMP, temperature);
+            }
             startActivity(intent);
         }
     }

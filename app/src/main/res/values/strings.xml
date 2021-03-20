@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Epitrack</string>
     <string name="sign_in_activity_title">Health Worker Sign in</string>
+    <string name="temp_bp_activity_title">Vital Signs</string>
     <string name="symptom_activity_title">Patient Symptoms</string>
     <string name="patient_details_title">Patient Details</string>
     <string name="diagnosis_title">Health Worker Diagnosis</string>

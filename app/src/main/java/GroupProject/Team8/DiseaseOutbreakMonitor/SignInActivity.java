@@ -38,7 +38,7 @@ public class SignInActivity extends AppCompatActivity {
 
             // DO LOGIN STUFF
             // send userid + password to server for verification
-            // store token on device
+            // store authorisation token on device
 
             startActivity(intent);
         }
