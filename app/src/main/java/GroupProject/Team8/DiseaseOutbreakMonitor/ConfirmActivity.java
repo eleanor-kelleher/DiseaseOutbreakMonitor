@@ -113,7 +113,7 @@ public class ConfirmActivity extends AppCompatActivity {
     public void addToDatabase(View view) {
         DatabaseHelper dbHelper = new DatabaseHelper(ConfirmActivity.this);
         if(dbHelper.addOne(patient)) {
-            Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         }
         else {
