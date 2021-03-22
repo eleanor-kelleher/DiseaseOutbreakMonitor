@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 public class ConfirmActivity extends AppCompatActivity {
 
-    private static final int PERMISSIONS_FINE_LOCATION = 99;
+    private static final int PERMISSIONS_COARSE_LOCATION = 99;
     long date;
     PatientModel patient = new PatientModel();
 
@@ -60,8 +61,6 @@ public class ConfirmActivity extends AppCompatActivity {
         locationRequest = LocationRequest.create();
         locationRequest.setInterval(30000);
         locationRequest.setFastestInterval(5000);
-
-        // --------- NULL POINTER EXCEPTION HERE ---------
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
 
         updateGPS();
@@ -84,7 +83,7 @@ public class ConfirmActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         switch (requestCode) {
-            case PERMISSIONS_FINE_LOCATION:
+            case PERMISSIONS_COARSE_LOCATION:
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     updateGPS();
                 }
@@ -96,7 +95,7 @@ public class ConfirmActivity extends AppCompatActivity {
 
     private void updateGPS() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(ConfirmActivity.this);
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
                 @Override
                 public void onSuccess(Location location) {
@@ -107,7 +106,7 @@ public class ConfirmActivity extends AppCompatActivity {
         }
         else {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                 requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_FINE_LOCATION);
+                 requestPermissions(new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSIONS_COARSE_LOCATION);
             }
         }
     }
@@ -119,7 +118,7 @@ public class ConfirmActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else {
-            Toast.makeText(ConfirmActivity.this, "Error adding user to database. Try again later.",
+            Toast.makeText(ConfirmActivity.this, "Error adding user to database. Try again in a moment.",
                     Toast.LENGTH_SHORT).show();
         }
 
