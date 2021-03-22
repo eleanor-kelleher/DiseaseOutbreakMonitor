@@ -14,27 +14,33 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="64dp"
         android:text="@string/text_temperature"
+        android:textColor="#47B3BF"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
+
         android:id="@+id/editTextBloodPressureSystolic"
         android:layout_width="67dp"
         android:layout_height="50dp"
-        android:ems="10"
+        android:ems="5"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/textBloodPressure"
         app:layout_constraintEnd_toStartOf="@+id/textSlash"
+        app:layout_constraintTop_toTopOf="@id/textBloodPressure"
         app:layout_constraintStart_toEndOf="@+id/textBloodPressure" />
+
 
     <EditText
         android:id="@+id/editTextBloodPressureDiastolic"
-        android:layout_width="77dp"
-        android:layout_height="55dp"
-        android:ems="10"
+        android:layout_width="67dp"
+        android:layout_height="50dp"
+        android:ems="5"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/editTextBloodPressureSystolic"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textSlash"
         app:layout_constraintTop_toTopOf="@+id/editTextBloodPressureSystolic" />
 
@@ -45,21 +51,24 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:text="@string/text_slash"
-        android:textSize="30sp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@+id/editTextBloodPressureSystolic"
         app:layout_constraintEnd_toStartOf="@+id/editTextBloodPressureDiastolic"
         app:layout_constraintStart_toEndOf="@+id/editTextBloodPressureSystolic"
         app:layout_constraintTop_toTopOf="@+id/editTextBloodPressureSystolic" />
 
+
     <EditText
         android:id="@+id/editTextTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="7"
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="@+id/textTemperature"
+        app:layout_constraintTop_toTopOf="@id/textTemperature"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textTemperature" />
+
 
     <TextView
         android:id="@+id/textBloodPressure"
@@ -67,19 +76,28 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="@string/text_blood_pressure"
+        android:textColor="#47B3BF"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textTemperature"
         app:layout_constraintTop_toBottomOf="@+id/textTemperature" />
 
     <Button
         android:id="@+id/buttonTempAndBPNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="119dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#47B3BF"
         android:onClick="confirmTempAndBP"
         android:text="@string/button_next"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
