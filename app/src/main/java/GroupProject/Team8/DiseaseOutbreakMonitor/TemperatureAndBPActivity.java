@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class TemperatureAndBPActivity extends AppCompatActivity {
 
     EditText editTextTemperature, editTextBloodPressureSystolic, editTextBloodPressureDiastolic;
@@ -17,6 +19,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
     int age, bloodPressureSystolic, bloodPressureDiastolic;
     boolean tempFilled, bpSystolicFilled, bpDiastolicFilled = false;
     String sex;
+    ArrayList<String> currentSymptoms = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,20 +70,58 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
             Toast.makeText(TemperatureAndBPActivity.this, "Please enter a number.", Toast.LENGTH_SHORT).show();
             editTextTemperature.setError( "A number is required.");
             tempFilled = false;
-        } else { tempFilled = true; }
+        }
+        else {
+            temperature = Double.parseDouble(editTextTemperature.getText().toString());
+            if (temperature >= 44 || temperature <= 21) {
+                editTextTemperature.setError( "Please enter a correct temperature");
+                tempFilled = false;
+            }
+            else {
+                tempFilled = true;
+                if (temperature >= 38) {
+                    currentSymptoms.add("Fever");
+                }
+            }
+        }
 
         if(TextUtils.isEmpty(editTextBloodPressureSystolic.getText())){
             Toast.makeText(TemperatureAndBPActivity.this, "Please enter a number.", Toast.LENGTH_SHORT).show();
             editTextBloodPressureSystolic.setError( "A number is required.");
             bpSystolicFilled = false;
-        } else { bpSystolicFilled = true; }
+        } else {
+            bloodPressureSystolic = Integer.parseInt(editTextBloodPressureSystolic.getText().toString());
+            if (bloodPressureSystolic >= 370 || bloodPressureSystolic <= 50) {
+                editTextBloodPressureSystolic.setError( "Please enter a correct systolic number");
+                bpSystolicFilled = false;
+            }
+            else {
+                bpSystolicFilled = true;
+            }
+        }
 
         if(TextUtils.isEmpty(editTextBloodPressureDiastolic.getText())){
             Toast.makeText(TemperatureAndBPActivity.this, "Please enter a number.", Toast.LENGTH_SHORT).show();
             editTextBloodPressureDiastolic.setError( "A number is required.");
             bpDiastolicFilled = false;
-        } else { bpDiastolicFilled = true; }
+        } else {
+            bloodPressureDiastolic = Integer.parseInt(editTextBloodPressureDiastolic.getText().toString());
+            if (bloodPressureDiastolic >= 360 || bloodPressureDiastolic <= 30) {
+                editTextBloodPressureDiastolic.setError("Please enter a correct diastolic number");
+                bpDiastolicFilled = false;
+            } else {
+                bpDiastolicFilled = true;
+            }
+        }
+        
         if(tempFilled && bpSystolicFilled && bpDiastolicFilled) {
+
+            if(bloodPressureSystolic <= 90 && bloodPressureDiastolic <= 60) {
+                currentSymptoms.add("Low blood pressure");
+            }
+            else if (bloodPressureSystolic >= 140 && bloodPressureDiastolic >= 90) {
+                currentSymptoms.add("High blood pressure");
+            }
             temperature = Double.parseDouble(editTextTemperature.getText().toString());
             bloodPressureSystolic = Integer.parseInt(editTextBloodPressureSystolic.getText().toString());
             bloodPressureDiastolic = Integer.parseInt(editTextBloodPressureDiastolic.getText().toString());
@@ -91,6 +132,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
             intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);
             intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic);
             intent.putExtra(Constants.TEMP, temperature);
+            intent.putExtra(Constants.SYMPTOMS, currentSymptoms);
             startActivity(intent);
         }
     }

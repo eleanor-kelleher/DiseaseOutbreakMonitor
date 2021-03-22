@@ -61,7 +61,12 @@ public class PatientDetailsActivity extends AppCompatActivity {
 
         if (!TextUtils.isEmpty(editTextAge.getText())) {
             age = Integer.parseInt(editTextAge.getText().toString());
-            intent.putExtra(Constants.AGE, age);
+            if (age < 0 || age > 120) {
+                editTextAge.setError("Please input an age between 0 and 120");
+            }
+            else {
+                intent.putExtra(Constants.AGE, age);
+            }
         }
         if (sex != null && !sex.isEmpty()) {
             intent.putExtra(Constants.SEX, sex);
@@ -80,16 +85,30 @@ public class PatientDetailsActivity extends AppCompatActivity {
     public void confirmPatientDetails(View view) {
 
         Intent intent = new Intent(this, TemperatureAndBPActivity.class);
+        boolean ageFilled, sexFilled = false;
 
         if(TextUtils.isEmpty(editTextAge.getText())){
-            Toast.makeText(PatientDetailsActivity.this, "Please enter an age.", Toast.LENGTH_SHORT).show();
-            editTextAge.setError( "Age is required.");
-        }
-        else if( sex == null || sex.isEmpty()){
-            Toast.makeText(PatientDetailsActivity.this, "Please select a sex.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PatientDetailsActivity.this, "Please enter an age", Toast.LENGTH_SHORT).show();
+            editTextAge.setError( "Age is required");
+            ageFilled = false;
         }
         else {
             age = Integer.parseInt(editTextAge.getText().toString());
+            if (age < 0 || age > 120) {
+                editTextAge.setError("Please input an age between 0 and 120");
+                ageFilled = false;
+            }
+            else { ageFilled = true; }
+        }
+
+        if( sex == null || sex.isEmpty()){
+            Toast.makeText(PatientDetailsActivity.this, "Please select a sex", Toast.LENGTH_SHORT).show();
+            sexFilled = false;
+        }
+        else {
+            sexFilled = true;
+        }
+        if(ageFilled && sexFilled) {
             intent.putExtra(Constants.AGE, age);
             intent.putExtra(Constants.SEX, sex);
             if ( bloodPressureSystolic > 0) {
