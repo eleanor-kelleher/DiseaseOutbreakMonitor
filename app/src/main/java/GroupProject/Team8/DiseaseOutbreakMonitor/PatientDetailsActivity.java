@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class PatientDetailsActivity extends AppCompatActivity {
 
     EditText editTextAge;
-    Button buttonMale, buttonFemale, buttonUndisclosed;
+    Button buttonMale, buttonFemale, buttonUndisclosed, lastButtonClicked;
 
     int age, bloodPressureSystolic, bloodPressureDiastolic;
     String sex;
@@ -35,6 +35,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
         buttonMale = findViewById(R.id.buttonMale);
         buttonFemale = findViewById(R.id.buttonFemale);
         buttonUndisclosed = findViewById(R.id.buttonUndisclosed);
+        lastButtonClicked = findViewById(R.id.buttonMale);
 
         Intent intent = getIntent();
         if (intent.getExtras() != null){
@@ -76,11 +77,26 @@ public class PatientDetailsActivity extends AppCompatActivity {
         return true;
     }
 
-    public void setMale(View view) { sex = "male"; }
+    public void setMale(View view) {
+        sex = "male";
+        lastButtonClicked.getBackground().setAlpha(255);
+        view.getBackground().setAlpha(170);
+        lastButtonClicked = (Button) view;
+    }
 
-    public void setFemale(View view) { sex = "female"; }
+    public void setFemale(View view) {
+        sex = "female";
+        lastButtonClicked.getBackground().setAlpha(255);
+        view.getBackground().setAlpha(170);
+        lastButtonClicked = (Button) view;
+    }
 
-    public void setUndisclosed(View view) { sex = "undisclosed"; }
+    public void setUndisclosed(View view) {
+        sex = "undisclosed";
+        lastButtonClicked.getBackground().setAlpha(255);
+        view.getBackground().setAlpha(170);
+        lastButtonClicked = (Button) view;
+    }
 
     public void confirmPatientDetails(View view) {
 
