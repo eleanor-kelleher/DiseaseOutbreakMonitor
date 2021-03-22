@@ -19,7 +19,6 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
     int age, bloodPressureSystolic, bloodPressureDiastolic;
     boolean tempFilled, bpSystolicFilled, bpDiastolicFilled = false;
     String sex;
-    ArrayList<String> currentSymptoms = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +78,6 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
             }
             else {
                 tempFilled = true;
-                if (temperature >= 38) {
-                    currentSymptoms.add("Fever");
-                }
             }
         }
 
@@ -113,18 +109,12 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
                 bpDiastolicFilled = true;
             }
         }
-        
+
         if(tempFilled && bpSystolicFilled && bpDiastolicFilled) {
 
-            if(bloodPressureSystolic <= 90 && bloodPressureDiastolic <= 60) {
-                currentSymptoms.add("Low blood pressure");
-            }
-            else if (bloodPressureSystolic >= 140 && bloodPressureDiastolic >= 90) {
-                currentSymptoms.add("High blood pressure");
-            }
-            temperature = Double.parseDouble(editTextTemperature.getText().toString());
-            bloodPressureSystolic = Integer.parseInt(editTextBloodPressureSystolic.getText().toString());
-            bloodPressureDiastolic = Integer.parseInt(editTextBloodPressureDiastolic.getText().toString());
+            //temperature = Double.parseDouble(editTextTemperature.getText().toString());
+            //bloodPressureSystolic = Integer.parseInt(editTextBloodPressureSystolic.getText().toString());
+            //bloodPressureDiastolic = Integer.parseInt(editTextBloodPressureDiastolic.getText().toString());
 
             Intent intent = new Intent(this, SymptomsActivity.class);
             intent.putExtra(Constants.AGE, age);
@@ -132,7 +122,6 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
             intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);
             intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic);
             intent.putExtra(Constants.TEMP, temperature);
-            intent.putExtra(Constants.SYMPTOMS, currentSymptoms);
             startActivity(intent);
         }
     }
