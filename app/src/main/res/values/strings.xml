@@ -4,7 +4,6 @@
     <string name="temp_bp_activity_title">Vital Signs</string>
     <string name="symptom_activity_title">Patient Symptoms</string>
     <string name="patient_details_title">Patient Details</string>
-    <string name="temp_bp_activity_title">Additional Details</string>
     <string name="diagnosis_title">Health Worker Diagnosis</string>
     <string name="hw_diagnosis_title">Health Worker Diagnosis</string>
     <string name="confirm_activity_title">Confirm Details</string>

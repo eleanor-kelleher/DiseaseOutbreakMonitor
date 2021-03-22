@@ -13,12 +13,9 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-
     LocationManager locationManager;
-
     int age;
     String sex;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         if (sex != null && !sex.isEmpty()) {
             intent.putExtra(Constants.SEX, sex);
         }
+        // if GPS is enabled, continue to the next activity.
+        // if GPS is NOT enabled, give an alert and don't let them proceed until GPS enabled.
         if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             startActivity(intent);
         }
@@ -60,13 +59,10 @@ public class MainActivity extends AppCompatActivity {
             new AlertDialog.Builder(this)
                     .setTitle(R.string.gps_alert_title)
                     .setMessage(R.string.gps_alert_message)
-
                     // Specifying a listener allows you to take an action before dismissing the dialog.
                     // The dialog is automatically dismissed when a dialog button is clicked.
                     .setPositiveButton(R.string.gps_alert_confirm, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
+                        public void onClick(DialogInterface dialog, int which) { }
                     })
                     .show();
         }
