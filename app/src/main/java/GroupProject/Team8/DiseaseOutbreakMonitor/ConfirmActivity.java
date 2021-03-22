@@ -57,11 +57,12 @@ public class ConfirmActivity extends AppCompatActivity {
 
         patient.setDate(date);
 
+        locationRequest = LocationRequest.create();
         locationRequest.setInterval(30000);
         locationRequest.setFastestInterval(5000);
 
         // --------- NULL POINTER EXCEPTION HERE ---------
-        //locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
 
         updateGPS();
     }

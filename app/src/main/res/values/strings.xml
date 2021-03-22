@@ -53,4 +53,7 @@
     <string name="button_confirm">Confirm Details</string>
     <string name="text_slash">/</string>
     <string name="text_blood_pressure">Blood Pressure (mmHg)</string>
+    <string name="gps_alert_message">This application requires GPS to be turned on. Please turn on GPS before continuing.</string>
+    <string name="gps_alert_title">GPS is not enabled</string>
+    <string name="gps_alert_confirm">OK</string>
 </resources>
