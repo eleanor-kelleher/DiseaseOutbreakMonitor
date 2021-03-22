@@ -64,6 +64,7 @@
         android:layout_marginTop="28dp"
         android:background="@color/teal_700"
         android:backgroundTint="#47B3BF"
+        android:drawableRight="@drawable/male_icon"
         android:onClick="setMale"
         android:text="@string/button_male"
         android:textAllCaps="false"
@@ -82,6 +83,7 @@
         android:layout_marginTop="8dp"
         android:background="@color/teal_700"
         android:backgroundTint="#47B3BF"
+        android:drawableRight="@drawable/female_icon"
         android:onClick="setFemale"
         android:text="@string/button_female"
         android:textAllCaps="false"
@@ -101,6 +103,7 @@
         android:background="@color/teal_700"
         android:backgroundTint="#47B3BF"
         android:onClick="setUndisclosed"
+        android:drawableRight="@drawable/undisclosed_icon"
         android:text="@string/button_undisclosed"
         android:textAllCaps="false"
         android:textColor="#ffffff"
@@ -194,8 +197,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
