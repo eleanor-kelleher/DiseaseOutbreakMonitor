@@ -27,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement = "CREATE TABLE " + PATIENT_TABLE
-                + " (ID INT PRIMARY KEY AUTOINCREMENT, "
+                + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CLMN_USER_ID + " INT, "
                 + CLMN_SYMPTOMS + " TEXT, "
                 + CLMN_TEMPERATURE_C + " REAL, "
