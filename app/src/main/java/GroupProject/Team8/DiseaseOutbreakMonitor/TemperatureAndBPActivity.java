@@ -32,15 +32,32 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
         Intent intent = getIntent();
         age = intent.getIntExtra(Constants.AGE, -1);
         sex = intent.getStringExtra(Constants.SEX);
+
+        if (intent.getIntExtra(Constants.BP_SYSTOLIC, -1) != -1){
+            editTextBloodPressureSystolic.setText(Integer.toString(intent.getIntExtra(Constants.BP_SYSTOLIC, -1)));
+        }
+        if (intent.getIntExtra(Constants.BP_DIASTOLIC, -1) != -1){
+            editTextBloodPressureDiastolic.setText(Integer.toString(intent.getIntExtra(Constants.BP_DIASTOLIC, -1)));
+        }
+        if (intent.getDoubleExtra(Constants.TEMP, -1.0) != -1.0){
+            editTextTemperature.setText(Double.toString(intent.getDoubleExtra(Constants.TEMP, -1)));
+        }
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(getApplicationContext(), PatientDetailsActivity.class);
         intent.putExtra(Constants.AGE, age);
         intent.putExtra(Constants.SEX, sex);
-        intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);
-        intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic);
-        intent.putExtra(Constants.TEMP, temperature);
+        if (!TextUtils.isEmpty(editTextTemperature.getText())) {
+            intent.putExtra(Constants.TEMP, Double.parseDouble(editTextTemperature.getText().toString()));
+        }
+        if(!TextUtils.isEmpty(editTextBloodPressureSystolic.getText())){
+            intent.putExtra(Constants.BP_SYSTOLIC, Integer.parseInt(editTextBloodPressureSystolic.getText().toString()));
+        }
+        if(!TextUtils.isEmpty(editTextBloodPressureDiastolic.getText())){
+            intent.putExtra(Constants.BP_DIASTOLIC, Integer.parseInt(editTextBloodPressureDiastolic.getText().toString()));
+        }
         startActivity(intent);
         return true;
     }

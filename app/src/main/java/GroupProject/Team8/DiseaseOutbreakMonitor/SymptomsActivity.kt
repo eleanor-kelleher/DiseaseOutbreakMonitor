@@ -26,7 +26,6 @@ class SymptomsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTitle(R.string.symptom_activity_title)
         setContentView(R.layout.activity_symptoms)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)

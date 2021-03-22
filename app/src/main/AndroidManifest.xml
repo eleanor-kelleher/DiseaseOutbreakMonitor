@@ -17,6 +17,10 @@
             android:label="@string/temp_bp_activity_title">
 
         </activity>
+
+        <activity android:name=".SignInActivity">
+          
+        </activity>
         <activity
             android:name=".ConfirmActivity"
             android:label="@string/confirm_activity_title">
@@ -37,6 +41,7 @@
             android:label="@string/patient_details_title">
 
         </activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Epitrack</string>
-    <string name="symptom_activity_title"> Patient Symptoms</string>
+    <string name="sign_in_activity_title">Health Worker Sign in</string>
+    <string name="temp_bp_activity_title">Vital Signs</string>
+    <string name="symptom_activity_title">Patient Symptoms</string>
     <string name="patient_details_title">Patient Details</string>
     <string name="temp_bp_activity_title">Additional Details</string>
     <string name="diagnosis_title">Health Worker Diagnosis</string>
@@ -56,7 +58,11 @@
     <string name="checkbox_vomiting">Vomiting</string>
 
     <string name="text_slash">/</string>
+    <string name="gps_alert_title">GPS is Not Enabled</string>
     <string name="gps_alert_message">This application requires GPS to be turned on. Please turn on GPS before continuing.</string>
     <string name="gps_alert_confirm">OK</string>
-
+    
+    <string name="button_sign_in">Sign in</string>
+    <string name="user_id_sign_in">User ID:</string>
+    <string name="password_sign_in">Password:</string>
 </resources>
