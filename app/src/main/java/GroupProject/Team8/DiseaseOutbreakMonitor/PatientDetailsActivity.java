@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class PatientDetailsActivity extends AppCompatActivity {
 
     EditText editTextAge;
-    Button buttonMale, buttonFemale;
+    Button buttonMale, buttonFemale, buttonUndisclosed;
 
     int age, bloodPressureSystolic, bloodPressureDiastolic;
     String sex;
@@ -34,6 +34,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
         editTextAge = findViewById(R.id.editTextAge);
         buttonMale = findViewById(R.id.buttonMale);
         buttonFemale = findViewById(R.id.buttonFemale);
+        buttonUndisclosed = findViewById(R.id.buttonUndisclosed);
 
         Intent intent = getIntent();
         if (intent.getExtras() != null){
