@@ -6,33 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".TemperatureAndBPActivity">
 
+
     <TextView
         android:id="@+id/textTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="52dp"
         android:text="@string/text_temperature"
         android:textColor="#47B3BF"
         android:textSize="22sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
-
         android:id="@+id/editTextBloodPressureSystolic"
         android:layout_width="67dp"
         android:layout_height="50dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginLeft="148dp"
+        android:layout_marginTop="40dp"
         android:ems="5"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/textBloodPressure"
-        app:layout_constraintEnd_toStartOf="@+id/textSlash"
-        app:layout_constraintTop_toTopOf="@id/textBloodPressure"
-        app:layout_constraintStart_toEndOf="@+id/textBloodPressure" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBloodPressure" />
 
     <EditText
         android:id="@+id/editTextBloodPressureDiastolic"
@@ -62,25 +60,27 @@
         android:id="@+id/editTextTemperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:ems="7"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="@+id/textTemperature"
-        app:layout_constraintTop_toTopOf="@id/textTemperature"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textTemperature" />
-
+        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTemperature"  />
 
     <TextView
         android:id="@+id/textBloodPressure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="56dp"
         android:text="@string/text_blood_pressure"
         android:textColor="#47B3BF"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/textTemperature" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTemperature" />
 
     <Button
         android:id="@+id/buttonTempAndBPNext"
@@ -98,6 +98,30 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/temperatureImage"
+        android:layout_width="59dp"
+        android:layout_height="117dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTemperature"
+        app:layout_constraintHorizontal_bias="0.588"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168"
+        app:srcCompat="@drawable/icon_temperature" />
+
+    <ImageView
+        android:id="@+id/bloodPressureImage"
+        android:layout_width="123dp"
+        android:layout_height="132dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editTextBloodPressureSystolic"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537"
+        app:srcCompat="@drawable/icon_blood_pressure" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
