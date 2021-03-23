@@ -16,6 +16,7 @@
     <string name="text_blood_pressure">Blood Pressure (mmHg):</string>
     <string name="text_diagnosis">Health Worker Diagnosis:</string>
     <string name="text_comment">Further Comments:</string>
+    <string name="text_patient_symptoms">Patient Symptoms:</string>
 
     <string name="button_add_patient">Add new patient</string>
     <string name="button_male">Male</string>

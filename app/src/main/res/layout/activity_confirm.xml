@@ -20,7 +20,113 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        app:layout_constraintHorizontal_bias="0.5"
- />
+        app:layout_constraintVertical_bias="0.9"
+        android:drawableRight="@drawable/check48"
+        android:drawableEnd="@drawable/check48" />
+
+    <ScrollView
+        android:layout_width="307dp"
+        android:layout_height="422dp"
+        android:layout_marginBottom="14dp"
+        android:paddingBottom="5dp"
+        android:background="@drawable/stroke_bg"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConfirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.764">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_bg2"
+                android:text="@string/text_age"
+                android:textColor="#47B3BF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="0dp" />
+
+            <TextView
+                android:id="@+id/textSex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_bg2"
+                android:text="@string/text_sex"
+                android:textColor="#47B3BF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="0dp" />
+
+            <TextView
+                android:id="@+id/textTemperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/stroke_bg2"
+                android:text="@string/text_temperature"
+                android:textColor="#47B3BF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="0dp" />
+
+            <TextView
+                android:id="@+id/textBloodPressure"
+                android:layout_width="match_parent"
+                android:background="@drawable/stroke_bg2"
+                android:layout_height="60dp"
+                android:text="@string/text_blood_pressure"
+                android:textColor="#47B3BF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="0dp" />
+
+            <TextView
+                android:id="@+id/PatientSymptoms"
+                android:layout_width="match_parent"
+                android:background="@drawable/stroke_bg2"
+                android:layout_height="100dp"
+                android:text="@string/text_patient_symptoms"
+                android:textColor="#47B3BF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="0dp" />
+
+            <TextView
+                android:id="@+id/textComment"
+                android:layout_width="match_parent"
+                android:background="@drawable/stroke_bg2"
+                android:layout_height="100dp"
+                android:text="@string/text_comment"
+                android:textColor="#47B3BF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="0dp" />
+
+            <TextView
+                android:id="@+id/textDiagnosis"
+                android:layout_width="match_parent"
+                android:background="@drawable/stroke_bg2"
+                android:layout_height="70dp"
+                android:text="@string/text_diagnosis"
+                android:textColor="#47B3BF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="0dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
