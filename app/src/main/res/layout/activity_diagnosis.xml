@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="@string/radio_cholera"
             android:textColor="@color/app_turquoise"
-            android:textSize="20sp"></RadioButton>
+            android:textSize="20sp"/>
 
         <RadioButton
             android:id="@+id/radioPolio"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:text="@string/radio_polio"
             android:textColor="@color/app_turquoise"
-            android:textSize="20sp"></RadioButton>
+            android:textSize="20sp"/>
 
         <RadioButton
             android:id="@+id/radioMeasles"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:text="@string/radio_measles"
             android:textColor="@color/app_turquoise"
-            android:textSize="20sp"></RadioButton>
+            android:textSize="20sp"/>
 
         <RadioButton
             android:id="@+id/radioUnsure"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:text="@string/radio_unsure"
             android:textColor="@color/app_turquoise"
-            android:textSize="20sp"></RadioButton>
+            android:textSize="20sp"/>
     </RadioGroup>
 
     <TextView
@@ -95,7 +95,8 @@
         android:layout_width="344dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/stroke_bg"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"

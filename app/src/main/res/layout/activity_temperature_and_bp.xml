@@ -28,6 +28,7 @@
         android:layout_marginTop="40dp"
         android:ems="5"
         android:inputType="number"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/editTextTemperature"
         app:layout_constraintTop_toBottomOf="@+id/textBloodPressure" />
 
@@ -37,6 +38,7 @@
         android:layout_height="50dp"
         android:ems="5"
         android:inputType="number"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/editTextBloodPressureSystolic"
         app:layout_constraintStart_toEndOf="@+id/textSlash"
         app:layout_constraintTop_toTopOf="@+id/editTextBloodPressureSystolic" />
@@ -61,7 +63,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="7"
+
         android:inputType="numberDecimal"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/temperatureImage"
         app:layout_constraintTop_toBottomOf="@+id/textTemperature" />

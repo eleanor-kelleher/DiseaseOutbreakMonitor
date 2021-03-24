@@ -86,7 +86,7 @@ public class ConfirmActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent(getApplicationContext(), SymptomsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), DiagnosisActivity.class);
         intent.putExtra(Constants.AGE, patient.getAge());
         intent.putExtra(Constants.SEX, patient.getSex());
         intent.putExtra(Constants.BP_SYSTOLIC, patient.getBloodPressureSystolic());
@@ -147,16 +147,16 @@ public class ConfirmActivity extends AppCompatActivity {
         textViewDiagnosis.setText(patient.getDisease());
     }
 
-    private void addToDatabase(View view) {
-        DatabaseHelper dbHelper = new DatabaseHelper(ConfirmActivity.this);
-        if(dbHelper.addOne(patient)) {
+    public void addToDatabase(View view) {
+        //DatabaseHelper dbHelper = new DatabaseHelper(ConfirmActivity.this);
+        //if(dbHelper.addOne(patient)) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }
-        else {
-            Toast.makeText(ConfirmActivity.this, "Error adding user to database. Try again in a moment.",
-                    Toast.LENGTH_SHORT).show();
-        }
+        //}
+        //else {
+        //    Toast.makeText(ConfirmActivity.this, "Error adding user to database. Try again in a moment.",
+        //            Toast.LENGTH_SHORT).show();
+        //}
 
     }
 }
