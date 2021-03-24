@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -12,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,11 +26,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 public class ConfirmActivity extends AppCompatActivity {
 
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
     private static final int PERMISSIONS_COARSE_LOCATION = 99;
     long date;
     PatientModel patient = new PatientModel();
     TextView textViewAge, textViewSex, textViewTemperature, textViewBloodPressure,
             textViewSymptoms, textViewComments, textViewDiagnosis;
+    TextView textViewPopup;
+    Button buttonPopup;
 
     // Google's API for location services
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -147,16 +153,34 @@ public class ConfirmActivity extends AppCompatActivity {
         textViewDiagnosis.setText(patient.getDisease());
     }
 
-    public void addToDatabase(View view) {
-        //DatabaseHelper dbHelper = new DatabaseHelper(ConfirmActivity.this);
-        //if(dbHelper.addOne(patient)) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        //}
-        //else {
-        //    Toast.makeText(ConfirmActivity.this, "Error adding user to database. Try again in a moment.",
-        //            Toast.LENGTH_SHORT).show();
-        //}
+    public void createNewDialog() {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View popupView = getLayoutInflater().inflate(R.layout.popup, null);
+        textViewPopup = popupView.findViewById(R.id.textViewPopupTitle);
+        textViewPopup.setText(R.string.text_popup);
+        buttonPopup = (Button) popupView.findViewById(R.id.textViewPopupButton);
+        dialogBuilder.setView(popupView);
+        dialog = dialogBuilder.create();
+        dialog.show();
 
+        buttonPopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    public void addToDatabase(View view) {
+        DatabaseHelper dbHelper = new DatabaseHelper(ConfirmActivity.this);
+        if(dbHelper.addOne(patient)) {
+            createNewDialog();
+        }
+        else {
+            Toast.makeText(ConfirmActivity.this, "Error adding user to database. Try again in a moment.",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }

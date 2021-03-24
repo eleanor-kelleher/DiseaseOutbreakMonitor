@@ -78,4 +78,6 @@
     <string name="temp_text_diagnosis">temp text diagnosis</string>
     <string name="temp_text_comment">temp text comments</string>
     <string name="temp_text_symptoms">temp text symptoms</string>
+    <string name="text_popup">Added this patient to the local database!</string>
+    <string name="button_popup">OK</string>
 </resources>
