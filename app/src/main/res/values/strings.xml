@@ -9,14 +9,14 @@
     <string name="confirm_activity_title">Confirm Details</string>
     <string name="welcome_message">Welcome!</string>
 
-    <string name="text_name">Name:</string>
-    <string name="text_age">Age:</string>
-    <string name="text_sex">Sex:</string>
-    <string name="text_temperature">Temperature ("\u2103"):</string>
-    <string name="text_blood_pressure">Blood Pressure (mmHg):</string>
-    <string name="text_diagnosis">Health Worker Diagnosis:</string>
-    <string name="text_comment">Further Comments:</string>
-    <string name="text_patient_symptoms">Patient Symptoms:</string>
+    <string name="text_name">Name: </string>
+    <string name="text_age">Age: </string>
+    <string name="text_sex">Sex: </string>
+    <string name="text_temperature">Temperature ("\u2103"): </string>
+    <string name="text_blood_pressure">Blood Pressure (mmHg): </string>
+    <string name="text_diagnosis">Health Worker Diagnosis: </string>
+    <string name="text_comment">Further Comments: </string>
+    <string name="text_patient_symptoms">Patient Symptoms: </string>
 
     <string name="button_add_patient">Add new patient</string>
     <string name="button_male">Male</string>
@@ -57,12 +57,25 @@
     <string name="checkbox_thirst">Thirst</string>
     <string name="checkbox_vomiting">Vomiting</string>
 
+    // gps alert stuff
     <string name="text_slash">/</string>
     <string name="gps_alert_title">GPS is Not Enabled</string>
     <string name="gps_alert_message">This application requires GPS to be turned on. Please turn on GPS before continuing.</string>
     <string name="gps_alert_confirm">OK</string>
-    
+
+    // sign in stuff
     <string name="button_sign_in">Sign in</string>
     <string name="user_id_sign_in">User ID:</string>
     <string name="password_sign_in">Password:</string>
+
+    // summary strings
+    <string name="summary_text_temperature">Temperature: </string>
+    <string name="summary_text_blood_pressure">Blood Pressure: </string>
+    <string name="temp_text_age">temp text age</string>
+    <string name="temp_text_sex">temp text sex</string>
+    <string name="temp_text_temperature">temp</string>
+    <string name="temp_text_bp">temp bp</string>
+    <string name="temp_text_diagnosis">temp text diagnosis</string>
+    <string name="temp_text_comment">temp text comments</string>
+    <string name="temp_text_symptoms">temp text symptoms</string>
 </resources>

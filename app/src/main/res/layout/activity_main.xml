@@ -10,7 +10,7 @@
         android:id="@+id/newPatientButton"
         android:layout_width="320dp"
         android:layout_height="100dp"
-        android:backgroundTint="#47B3BF"
+        android:layout_marginBottom="64dp"
         android:drawableRight="@drawable/ic_newpatient"
         android:onClick="addNewPatient"
         android:text="@string/button_new_patient"
@@ -21,9 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/homeScreenImage"
@@ -32,8 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/homescreen_image" />
+        app:srcCompat="@drawable/homescreen_image"
+        tools:layout_editor_absoluteY="-32dp" />
 
     <TextView
         android:id="@+id/welcome"
@@ -44,12 +42,10 @@
         android:textColor="#47B3BF"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/newPatientButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
