@@ -10,6 +10,9 @@
         android:id="@+id/buttonConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:drawableEnd="@drawable/check48"
+        android:drawableRight="@drawable/check48"
         android:onClick="addToDatabase"
         android:text="@string/button_confirm"
         android:textAllCaps="false"
@@ -18,18 +21,17 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9"
-        android:drawableRight="@drawable/check48"
-        android:drawableEnd="@drawable/check48" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
-        android:layout_width="307dp"
-        android:layout_height="422dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:layout_marginBottom="14dp"
-        android:paddingBottom="5dp"
-        android:background="@drawable/stroke_bg"
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/buttonConfirm"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,95 +39,193 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.764">
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textAge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/stroke_bg2"
-                android:text="@string/text_age"
-                android:textColor="#47B3BF"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="0dp" />
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="5dp">
 
-            <TextView
-                android:id="@+id/textSex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/stroke_bg2"
-                android:text="@string/text_sex"
-                android:textColor="#47B3BF"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="0dp" />
+                <TextView
+                    android:id="@+id/textAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/text_age"
+                    android:textColor="@color/app_turquoise"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textTemperature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/stroke_bg2"
-                android:text="@string/text_temperature"
-                android:textColor="#47B3BF"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="0dp" />
+                <TextView
+                    android:id="@+id/textAgeFillable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/temp_text_age"
+                    android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/textBloodPressure"
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/textSex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/text_sex"
+                    android:textColor="@color/app_turquoise"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textSexFillable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/temp_text_sex"
+                    android:textSize="22sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/textTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/summary_text_temperature"
+                    android:textColor="@color/app_turquoise"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textTempFillable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/temp_text_temperature"
+                    android:textSize="22sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="3dip">
+
+                <TextView
+                    android:id="@+id/textBloodPressure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:paddingRight="20dp"
+                    android:text="@string/summary_text_blood_pressure"
+                    android:textColor="@color/app_turquoise"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textBPFillable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/temp_text_bp"
+                    android:textSize="22sp" />
+            </TableRow>
+
+            <View
+                android:id="@+id/viewDivider"
                 android:layout_width="match_parent"
-                android:background="@drawable/stroke_bg2"
-                android:layout_height="60dp"
-                android:text="@string/text_blood_pressure"
-                android:textColor="#47B3BF"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="0dp" />
+                android:layout_height="2dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
                 android:id="@+id/PatientSymptoms"
                 android:layout_width="match_parent"
-                android:background="@drawable/stroke_bg2"
-                android:layout_height="100dp"
-                android:text="@string/text_patient_symptoms"
-                android:textColor="#47B3BF"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginStart="0dp" />
+                android:text="@string/text_patient_symptoms"
+                android:textColor="@color/app_turquoise"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textSymptomsFillable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/temp_text_symptoms"
+                android:textSize="22sp"
+                android:padding="5dp"/>
 
             <TextView
                 android:id="@+id/textComment"
                 android:layout_width="match_parent"
-                android:background="@drawable/stroke_bg2"
-                android:layout_height="100dp"
-                android:text="@string/text_comment"
-                android:textColor="#47B3BF"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginStart="0dp" />
+                android:text="@string/text_comment"
+                android:textColor="@color/app_turquoise"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textCommentFillable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/temp_text_comment"
+                android:textSize="22sp"
+                android:padding="5dp"/>
 
             <TextView
                 android:id="@+id/textDiagnosis"
                 android:layout_width="match_parent"
-                android:background="@drawable/stroke_bg2"
-                android:layout_height="70dp"
-                android:text="@string/text_diagnosis"
-                android:textColor="#47B3BF"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
                 android:layout_marginLeft="5dp"
-                android:layout_marginStart="0dp" />
-        </LinearLayout>
+
+                android:text="@string/text_diagnosis"
+                android:textColor="@color/app_turquoise"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textDiagnosisFillable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/temp_text_diagnosis"
+                android:textSize="22sp"
+                android:padding="5dp"/>
+        </TableLayout>
     </ScrollView>
 
 
