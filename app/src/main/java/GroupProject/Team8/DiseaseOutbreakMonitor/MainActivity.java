@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-        if (!hasToken()){   // no authorisation token --> make the user sign in
+        if (!hasLogin()){   // no authorisation token --> make the user sign in
             goToSignIn();
         }
         else {              // do normal stuff
@@ -73,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
     /*
         Returns true if a valid token exists on the device
      */
-    private boolean hasToken() {
+    private boolean hasLogin() {
         /*
-            ... check for token ...
-            if (validTokenExists)
+            ... check for username/password stored on device ...
+            if (validLoginExists)
                 return true
             else
                 return false
