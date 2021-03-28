@@ -14,4 +14,6 @@ public class Constants {
     public final static String MEASLES = "measles";
     public final static String POLIO = "polio";
     public final static String UNSURE = "unsure";
+
+    public final static String CREDENTIALS_FILE_NAME = "credentials.txt";
 }

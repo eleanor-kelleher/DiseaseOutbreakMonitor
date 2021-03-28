@@ -11,6 +11,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class MainActivity extends AppCompatActivity {
 
     LocationManager locationManager;
@@ -24,21 +30,25 @@ public class MainActivity extends AppCompatActivity {
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-        if (!hasLogin()){   // no authorisation token --> make the user sign in
-            goToSignIn();
-        }
-        else {              // do normal stuff
-            setContentView(R.layout.activity_main);
+        try {
+            if (!hasLogin()){   // no authorisation token --> make the user sign in
+                goToSignIn();
+            }
+            else {              // do normal stuff
+                setContentView(R.layout.activity_main);
 
-            Intent intent = getIntent();
-            if (intent.getExtras() != null){
-                if (intent.getIntExtra(Constants.AGE, -1) != -1){
-                    age = intent.getIntExtra(Constants.AGE, -1);
-                }
-                if (intent.getStringExtra(Constants.SEX) != null){
-                    sex = intent.getStringExtra(Constants.SEX);
+                Intent intent = getIntent();
+                if (intent.getExtras() != null){
+                    if (intent.getIntExtra(Constants.AGE, -1) != -1){
+                        age = intent.getIntExtra(Constants.AGE, -1);
+                    }
+                    if (intent.getStringExtra(Constants.SEX) != null){
+                        sex = intent.getStringExtra(Constants.SEX);
+                    }
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -73,19 +83,47 @@ public class MainActivity extends AppCompatActivity {
     /*
         Returns true if a valid token exists on the device
      */
-    private boolean hasLogin() {
-        /*
-            ... check for username/password stored on device ...
-            if (validLoginExists)
-                return true
-            else
-                return false
-         */
-        return true;
+    private boolean hasLogin() throws IOException {
+        String credentials = readCredentialsFile();
+        if (credentials.contains("username") && credentials.contains("password"))
+            return true;
+        else
+            return false;
+    }
+
+    private String readCredentialsFile() throws IOException {
+        String result = "";
+        if (fileExists(Constants.CREDENTIALS_FILE_NAME))
+        {
+            InputStream inputStream = openFileInput(Constants.CREDENTIALS_FILE_NAME);
+            if(inputStream != null)
+            {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String temp = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp);
+                    stringBuilder.append("\n");
+                }
+
+                inputStream.close();
+                result = stringBuilder.toString();
+            }
+        }
+        return result;
     }
 
     private void goToSignIn (){
         Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
+    }
+
+    public boolean fileExists(String filename)
+    {
+        File file = getBaseContext().getFileStreamPath(filename);
+        return file.exists();
     }
 }

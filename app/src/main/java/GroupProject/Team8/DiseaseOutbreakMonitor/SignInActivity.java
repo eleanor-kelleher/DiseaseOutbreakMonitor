@@ -2,6 +2,7 @@ package GroupProject.Team8.DiseaseOutbreakMonitor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,11 +22,25 @@ import com.google.android.gms.common.internal.FallbackServiceBroker;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+import javax.crypto.Cipher;
+import javax.crypto.CipherInputStream;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+
 public class SignInActivity extends AppCompatActivity {
 
     EditText editTextUserId, editTextPassword;
     String username, password;
-    boolean validUser;
+    boolean validUser = true;   // set to true for testing (no server to interact with)
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +54,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void loginPOST(String username, String password) {
-        String postUrl = "server/user/validate";        //PLACEHOLDER
+        String postUrl = "SERVER_URL/user/validate";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JSONObject postData = new JSONObject();
@@ -56,9 +71,11 @@ public class SignInActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 boolean isValidUser = false;
                 try {
-                    if (response.getString("response") == "true"){
+                    if (response.getString("response") == "valid"){
                         isValidUser = true;
-                        // WRITE USERNAME & PASSWORD TO DEVICE
+                        String username = postData.getString("username");
+                        String password = postData.getString("password");
+                        writeToFile(username, password);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -89,13 +106,52 @@ public class SignInActivity extends AppCompatActivity {
         else {
             username = editTextUserId.getText().toString();
             password = editTextPassword.getText().toString();
+            writeToFile(username, password);        // here to testing
 
             // DO LOGIN STUFF
-            loginPOST(username, password);
+            //loginPOST(username, password);
             if (validUser){
                 startActivity(intent);
             }
         }
     }
+
+    private void writeToFile(String username, String password)
+    {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(Constants.CREDENTIALS_FILE_NAME,
+                    Context.MODE_PRIVATE));
+            byte[] usernameBytes = username.getBytes();
+            byte[] passwordBytes = password.getBytes();
+            usernameBytes = encrypt(usernameBytes);
+            passwordBytes = encrypt(passwordBytes);
+            outputStreamWriter.write("username: " + usernameBytes);
+            outputStreamWriter.write("\r\n");
+
+            outputStreamWriter.write("password: " + passwordBytes);
+            outputStreamWriter.close();
+
+        } catch(FileNotFoundException e)
+        {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private byte[] encrypt(byte[] plaintext) throws Exception
+    {
+        KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+        keyGen.init(128);
+        SecretKey secretKey = keyGen.generateKey();
+        Cipher aesCipher = Cipher.getInstance("AES");
+        aesCipher.init(Cipher.ENCRYPT_MODE, secretKey);
+        byte [] byteCipherText = aesCipher.doFinal(plaintext);
+        return byteCipherText;
+    }
+
+
 
 }
