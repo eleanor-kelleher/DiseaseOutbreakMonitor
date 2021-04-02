@@ -6,40 +6,132 @@
     android:layout_height="match_parent"
     tools:context=".PatientDetailsActivity">
 
-    <!-- Correct? inputType below -->
-
-
     <TextView
-        android:id="@+id/textAge"
+        android:id="@+id/textFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="@string/text_age"
+        android:text="@string/text_first_name"
         android:textColor="@color/app_turquoise"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/editTextAge"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
-        android:id="@+id/editTextAge"
+        android:id="@+id/editTextFirstName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-
+        android:ems="8"
         android:inputType="number"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textAge"
-        app:layout_constraintEnd_toEndOf="@+id/buttonMale"
-        app:layout_constraintStart_toStartOf="@+id/buttonMale"
-        app:layout_constraintTop_toTopOf="@+id/textAge" />
+        app:layout_constraintBottom_toBottomOf="@+id/textFirstName"
+        app:layout_constraintTop_toTopOf="@+id/textFirstName"
+        app:layout_constraintVertical_bias="0.521"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="152dp" />
+
+    <TextView
+        android:id="@+id/textDOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/text_dob"
+        android:textColor="@color/app_turquoise"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/editTextDOB1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textFirstName" />
+
+
+  <!--
+    > <EditText
+        android:id="@+id/editTextDOB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="8"
+        android:inputType="number"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textDOB"
+        app:layout_constraintEnd_toEndOf="@+id/editTextFirstName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextFirstName"
+        app:layout_constraintTop_toTopOf="@+id/textDOB"
+        app:layout_constraintVertical_bias="0.478" />
+
+    -->
+
+    <EditText
+        android:id="@+id/editTextDOB1"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:ems="5"
+        android:inputType="number"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textDOB"
+        app:layout_constraintStart_toStartOf="@+id/editTextFirstName"
+        app:layout_constraintTop_toTopOf="@id/textDOB" />
+
+    <EditText
+        android:id="@+id/editTextDOB2"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:ems="5"
+        android:inputType="number"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextDOB1"
+        app:layout_constraintStart_toEndOf="@+id/textSlash2"
+        app:layout_constraintTop_toTopOf="@+id/editTextDOB1"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/editTextDOB3"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:ems="5"
+        android:inputType="number"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextDOB1"
+        app:layout_constraintStart_toEndOf="@+id/textSlash3"
+        app:layout_constraintTop_toTopOf="@+id/editTextDOB1"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textSlash2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/text_slash"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextDOB1"
+        app:layout_constraintEnd_toStartOf="@+id/editTextDOB2"
+        app:layout_constraintStart_toEndOf="@+id/editTextDOB1"
+        app:layout_constraintTop_toTopOf="@+id/editTextDOB1" />
+
+    <TextView
+        android:id="@+id/textSlash3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/text_slash"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextDOB1"
+        app:layout_constraintEnd_toStartOf="@+id/editTextDOB3"
+        app:layout_constraintStart_toEndOf="@+id/editTextDOB2"
+        app:layout_constraintTop_toTopOf="@+id/editTextDOB1" />
 
     <TextView
         android:id="@+id/textSex"
@@ -47,20 +139,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="40dp"
         android:text="@string/text_sex"
         android:textColor="@color/app_turquoise"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonMale" />
+        app:layout_constraintTop_toBottomOf="@+id/textDOB" />
 
     <Button
         android:id="@+id/buttonMale"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="28dp"
         android:background="@color/teal_700"
         android:backgroundTint="#47B3BF"
         android:drawableRight="@drawable/male_icon"
@@ -70,17 +160,15 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/buttonUndisclosed"
-        app:layout_constraintStart_toEndOf="@id/textSex"
-        app:layout_constraintTop_toBottomOf="@id/editTextAge" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextFirstName"
+        app:layout_constraintStart_toEndOf="@+id/textFirstName"
+        app:layout_constraintTop_toTopOf="@+id/textSex" />
 
     <Button
         android:id="@+id/buttonFemale"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:background="@color/teal_700"
         android:backgroundTint="#47B3BF"
         android:drawableRight="@drawable/female_icon"
@@ -90,97 +178,55 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/buttonUndisclosed"
-        app:layout_constraintStart_toEndOf="@id/textSex"
+        app:layout_constraintEnd_toEndOf="@+id/buttonMale"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/buttonMale"
         app:layout_constraintTop_toBottomOf="@+id/buttonMale" />
 
     <Button
         android:id="@+id/buttonUndisclosed"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:background="@color/teal_700"
         android:backgroundTint="#47B3BF"
-        android:onClick="setUndisclosed"
         android:drawableRight="@drawable/undisclosed_icon"
+        android:onClick="setUndisclosed"
         android:text="@string/button_undisclosed"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/textSex"
+        app:layout_constraintEnd_toEndOf="@+id/buttonFemale"
+        app:layout_constraintStart_toStartOf="@+id/buttonFemale"
         app:layout_constraintTop_toBottomOf="@+id/buttonFemale" />
 
-    <!-- Correct? inputType below -->
+    <TextView
+        android:id="@+id/textLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="176dp"
+        android:text="@string/text_location"
+        android:textColor="#47B3BF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSex" />
 
-    <!-- <TextView
-         android:id="@+id/textAddress"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginStart="32dp"
-         android:layout_marginLeft="32dp"
-         android:layout_marginTop="64dp"
-         android:layout_marginEnd="16dp"
-         android:layout_marginRight="16dp"
-         android:text="@string/text_address"
-         android:textColor="#47B3BF"
-         android:textSize="22sp"
-         android:textStyle="bold"
-         app:layout_constraintEnd_toStartOf="@+id/edit_text_address"
-         app:layout_constraintHorizontal_bias="0.0"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toTopOf="@id/textTemp" />
-
-     <EditText
-         android:id="@+id/edit_text_address"
-         android:layout_width="0dp"
-         android:layout_height="wrap_content"
-         android:layout_marginStart="16dp"
-         android:layout_marginLeft="16dp"
-         android:layout_marginEnd="32dp"
-         android:layout_marginRight="32dp"
-         android:ems="10"
-         android:inputType="text"
-         android:textSize="24sp"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintStart_toEndOf="@+id/textAddress"
-         app:layout_constraintTop_toTopOf="@+id/textAddress" />
-
-     <TextView
-         android:id="@+id/textReligion"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginStart="32dp"
-         android:layout_marginLeft="32dp"
-         android:layout_marginTop="64dp"
-         android:layout_marginEnd="16dp"
-         android:layout_marginRight="16dp"
-         android:text="@string/text_religion"
-         android:textColor="#47B3BF"
-         android:textSize="22sp"
-         android:textStyle="bold"
-         app:layout_constraintEnd_toStartOf="@+id/edit_text_religion"
-         app:layout_constraintHorizontal_bias="0.0"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toTopOf="@id/textAddress" />
-
-     <EditText
-         android:id="@+id/edit_text_religion"
-         android:layout_width="0dp"
-         android:layout_height="wrap_content"
-         android:layout_marginStart="16dp"
-         android:layout_marginLeft="16dp"
-         android:layout_marginEnd="32dp"
-         android:layout_marginRight="32dp"
-         android:ems="10"
-         android:inputType="text"
-         android:textSize="24sp"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintStart_toEndOf="@+id/textReligion"
-         app:layout_constraintTop_toTopOf="@+id/textReligion" />
- -->
+    <EditText
+        android:id="@+id/edit_text_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="8"
+        android:inputType="text"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textLocation"
+        app:layout_constraintEnd_toEndOf="@+id/buttonUndisclosed"
+        app:layout_constraintStart_toStartOf="@+id/buttonUndisclosed"
+        app:layout_constraintTop_toTopOf="@+id/textLocation"
+        app:layout_constraintVertical_bias="0.565" />
 
     <Button
         android:id="@+id/buttonNext2"
