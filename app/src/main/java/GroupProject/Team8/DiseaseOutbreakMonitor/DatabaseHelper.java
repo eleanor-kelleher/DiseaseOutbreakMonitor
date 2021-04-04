@@ -2,11 +2,14 @@ package GroupProject.Team8.DiseaseOutbreakMonitor;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PATIENT_TABLE = "PATIENT_TABLE";
@@ -84,4 +87,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return true;
     }
+
+    public ArrayList<ContentValues> getAllPatients() {
+        String query= "SELECT * FROM " + PATIENT_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<ContentValues> patientList = new ArrayList<>();
+        try {
+            Cursor cursor = db.rawQuery(query, null);
+            if (cursor != null) {
+                if  (cursor.moveToFirst()) {
+                    do {
+                        ContentValues patient = new ContentValues();
+
+                        for (int i = 0; i < cursor.getColumnCount(); i++) {
+                            patient.put(cursor.getColumnName(i), cursor.getString(i));
+                        }
+                        patientList.add(patient);
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
+            }
+        } catch (Exception e) {
+            Log.e("", "exception : " + e.toString());
+        } finally {
+            db.close();
+        }
+        return patientList;
+    }
+
 }
