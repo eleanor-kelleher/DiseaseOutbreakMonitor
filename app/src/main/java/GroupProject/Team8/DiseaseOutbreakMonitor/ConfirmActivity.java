@@ -31,7 +31,7 @@ public class ConfirmActivity extends AppCompatActivity {
     private static final int PERMISSIONS_COARSE_LOCATION = 99;
     long date;
     PatientModel patient = new PatientModel();
-    TextView textViewAge, textViewSex, textViewTemperature, textViewBloodPressure,
+    TextView textViewDOB, textViewSex, textViewTemperature, textViewBloodPressure,
             textViewSymptoms, textViewComments, textViewDiagnosis;
     TextView textViewPopup;
     Button buttonPopup;
@@ -52,7 +52,7 @@ public class ConfirmActivity extends AppCompatActivity {
         date = System.currentTimeMillis() / 1000L;
 
         Intent intent = getIntent();
-        patient.setAge(intent.getIntExtra(Constants.DOB, -1));
+        patient.setDateOfBirth(intent.getLongExtra(Constants.DOB, -1));
         patient.setSex(intent.getStringExtra(Constants.SEX));
         patient.setTemperatureCelsius(intent.getDoubleExtra(Constants.TEMP, -1));
         patient.setBloodPressureSystolic(intent.getIntExtra(Constants.BP_SYSTOLIC, -1));
@@ -65,7 +65,7 @@ public class ConfirmActivity extends AppCompatActivity {
             patient.setComment(intent.getStringExtra(Constants.COMMENT));
         }
 
-        textViewAge = findViewById(R.id.textAgeFillable);
+        textViewDOB = findViewById(R.id.textDOBFillable);
         textViewSex = findViewById(R.id.textSexFillable);
         textViewTemperature = findViewById(R.id.textTempFillable);
         textViewBloodPressure = findViewById(R.id.textBPFillable);
@@ -93,7 +93,7 @@ public class ConfirmActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(getApplicationContext(), DiagnosisActivity.class);
-        intent.putExtra(Constants.DOB, patient.getAge());
+        intent.putExtra(Constants.DOB, patient.getDateOfBirth());
         intent.putExtra(Constants.SEX, patient.getSex());
         intent.putExtra(Constants.BP_SYSTOLIC, patient.getBloodPressureSystolic());
         intent.putExtra(Constants.BP_DIASTOLIC, patient.getBloodPressureDiastolic());
@@ -141,7 +141,7 @@ public class ConfirmActivity extends AppCompatActivity {
     }
 
     public void fillSummaryTable() {
-        textViewAge.setText(String.valueOf(patient.getAge()));
+        textViewDOB.setText(String.valueOf(patient.getDateOfBirth()));
         textViewSex.setText(patient.getSex());
         textViewTemperature.setText(String.valueOf(patient.getTemperatureCelsius()));
         int bpSystolic = patient.getBloodPressureSystolic();

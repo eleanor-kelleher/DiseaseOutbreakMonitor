@@ -72,7 +72,7 @@
     // summary strings
     <string name="summary_text_temperature">Temperature: </string>
     <string name="summary_text_blood_pressure">Blood Pressure: </string>
-    <string name="temp_text_age">temp text age</string>
+    <string name="temp_text_dob">temp text dob</string>
     <string name="temp_text_sex">temp text sex</string>
     <string name="temp_text_temperature">temp</string>
     <string name="temp_text_bp">temp bp</string>
