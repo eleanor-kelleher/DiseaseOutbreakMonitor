@@ -53,12 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNewPatient(View view) {
         Intent intent = new Intent(this, PatientDetailsActivity.class);
-        if (age > 0) {
-            intent.putExtra(Constants.DOB, age);
-        }
-        if (sex != null && !sex.isEmpty()) {
-            intent.putExtra(Constants.SEX, sex);
-        }
+
         // if GPS is enabled, continue to the next activity.
         // if GPS is NOT enabled, give an alert and don't let them proceed until GPS enabled.
         if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
@@ -76,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
                     .show();
         }
 
+        startActivity(intent);
+    }
+
+    public void viewPatientList(View view) {
+        Intent intent = new Intent(this, PatientListActivity.class);
         startActivity(intent);
     }
 
@@ -124,5 +124,9 @@ public class MainActivity extends AppCompatActivity {
     {
         File file = getBaseContext().getFileStreamPath(filename);
         return file.exists();
+    }
+
+    private void addTestPatients() {
+
     }
 }

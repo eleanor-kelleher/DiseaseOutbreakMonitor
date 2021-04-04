@@ -10,7 +10,7 @@
         android:id="@+id/newPatientButton"
         android:layout_width="320dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="8dp"
         android:drawableRight="@drawable/ic_newpatient"
         android:onClick="addNewPatient"
         android:text="@string/button_new_patient"
@@ -18,7 +18,7 @@
         android:textColor="#ffffff"
         android:textSize="28sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonDatabase"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,6 +47,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDatabase"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="32dp"
+        android:onClick="viewPatientList"
+        android:text="@string/button_database"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/newPatientButton"
+        app:layout_constraintStart_toStartOf="@+id/newPatientButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

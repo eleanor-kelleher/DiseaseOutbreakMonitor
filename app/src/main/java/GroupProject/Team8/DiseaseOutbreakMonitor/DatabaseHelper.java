@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PATIENT_TABLE = "PATIENT_TABLE";
     public static final String CLMN_USER_ID = "USER_ID";
     public static final String CLMN_NAME = "NAME";
-    public static final String CLMN_DOB = "DATE_OF_BIRTH";
+    public static final String CLMN_DOB = "DOB";
     public static final String CLMN_SYMPTOMS = "SYMPTOMS";
     public static final String CLMN_TEMPERATURE_C = "TEMPERATURE_C";
     public static final String CLMN_BP_SYSTOLIC = "BP_SYSTOLIC";

@@ -72,6 +72,7 @@
     // summary strings
     <string name="summary_text_temperature">Temperature: </string>
     <string name="summary_text_blood_pressure">Blood Pressure: </string>
+    <string name="temp_text_name">temp text name</string>
     <string name="temp_text_dob">temp text dob</string>
     <string name="temp_text_sex">temp text sex</string>
     <string name="temp_text_temperature">temp</string>
@@ -79,7 +80,11 @@
     <string name="temp_text_diagnosis">temp text diagnosis</string>
     <string name="temp_text_comment">temp text comments</string>
     <string name="temp_text_symptoms">temp text symptoms</string>
+    <string name="temp_text_time">temp text date &amp; time</string>
     <string name="text_popup">Added this patient to the local database!</string>
     <string name="button_popup">OK</string>
     <string name="hint_dob">dd/mm/yyyy </string>
+    <string name="button_database">View Patients</string>
+    <string name="patient_list_title">Patients Saved</string>
+    <string name="no_entries">No entries found in the database.</string>
 </resources>
