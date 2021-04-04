@@ -15,7 +15,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
     EditText editTextTemperature, editTextBloodPressureSystolic, editTextBloodPressureDiastolic;
     double temperature;
     int bloodPressureSystolic, bloodPressureDiastolic;
-    long dateOfBirth;
+    String dateOfBirth;
     boolean tempFilled, bpSystolicFilled, bpDiastolicFilled = false;
     String sex;
 
@@ -31,7 +31,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
         editTextBloodPressureDiastolic = findViewById(R.id.editTextBloodPressureDiastolic);
 
         Intent intent = getIntent();
-        dateOfBirth = intent.getLongExtra(Constants.DOB, -1);
+        dateOfBirth = intent.getStringExtra(Constants.DOB);
         sex = intent.getStringExtra(Constants.SEX);
 
         if (intent.getIntExtra(Constants.BP_SYSTOLIC, -1) != -1){

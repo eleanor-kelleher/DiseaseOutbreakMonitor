@@ -18,7 +18,7 @@ public class DiagnosisActivity extends AppCompatActivity {
     RadioButton radioCholera, radioPolio, radioMeasles, radioUnsure;
     EditText editTextComment;
     int bloodPressureSystolic, bloodPressureDiastolic;
-    long dateOfBirth;
+    String dateOfBirth;
     double temperature;
     String sex, comment, disease, symptoms;
 
@@ -37,7 +37,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         editTextComment = findViewById(R.id.editTextComments);
 
         Intent intent = getIntent();
-        dateOfBirth = intent.getLongExtra(Constants.DOB, -1);
+        dateOfBirth = intent.getStringExtra(Constants.DOB);
         sex = intent.getStringExtra(Constants.SEX);
         bloodPressureSystolic = intent.getIntExtra(Constants.BP_SYSTOLIC, -1);
         bloodPressureDiastolic = intent.getIntExtra(Constants.BP_DIASTOLIC, -1);
@@ -48,9 +48,6 @@ public class DiagnosisActivity extends AppCompatActivity {
         // more error handling for other data fields needed
         // ***
 
-        if (dateOfBirth == -1) {
-            Toast.makeText(DiagnosisActivity.this, "Error getting patient age. Please try again.", Toast.LENGTH_LONG).show();
-        }
     }
 
     public boolean onOptionsItemSelected(MenuItem item){

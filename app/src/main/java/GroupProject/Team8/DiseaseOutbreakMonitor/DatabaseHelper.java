@@ -37,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CLMN_USER_ID + " INT, "
                 + CLMN_NAME + " TEXT, "
-                + CLMN_DOB + " INT, "
+                + CLMN_DOB + " TEXT, "
                 + CLMN_SEX + " TEXT, "
                 + CLMN_BP_SYSTOLIC + " INT, "
                 + CLMN_BP_DIASTOLIC + " INT, "

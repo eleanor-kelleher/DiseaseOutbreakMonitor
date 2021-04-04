@@ -41,17 +41,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         ContentValues currentPatient = patientList.get(position);
 
         holder.textViewName.setText(currentPatient.getAsString("NAME"));
-        String dateOfBirth = getDateString(currentPatient.getAsLong("DOB"), false);
+        String dateOfBirth = currentPatient.getAsString("DOB");
         holder.textViewDOB.setText(dateOfBirth);
-        String dateCreated = "Date Created: " + getDateString(currentPatient.getAsLong("DATE_CREATED"), true);
 
-        holder.textViewDateCreated.setText(dateCreated);
+        Date dateCreated = new java.util.Date(currentPatient.getAsLong("DATE_CREATED") * 1000L);
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm yyyy-MM-dd", Locale.getDefault());
+        String dateCreatedString = "Date Created: " + sdf.format(dateCreated);
+        holder.textViewDateCreated.setText(dateCreatedString);
 
         // lambda function for OnClickListener
         holder.rowLayout.setOnClickListener(v -> {
             Intent intent = new Intent(context, PatientEntryActivity.class);
             intent.putExtra(Constants.ENTRY_NAME, currentPatient.getAsString("NAME"));
-            intent.putExtra(Constants.ENTRY_DOB, currentPatient.getAsLong("DOB"));
+            intent.putExtra(Constants.ENTRY_DOB, currentPatient.getAsString("DOB"));
             intent.putExtra(Constants.ENTRY_SEX, currentPatient.getAsString("SEX"));
             intent.putExtra(Constants.ENTRY_TEMP, currentPatient.getAsDouble("TEMPERATURE_C"));
             intent.putExtra(Constants.ENTRY_BP_SYSTOLIC, currentPatient.getAsInteger("BP_SYSTOLIC"));
@@ -67,19 +69,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public int getItemCount() {
         return patientList.size();
-    }
-
-    public String getDateString(long unixTime, boolean includeTime) {
-        Date dateOfBirth = new java.util.Date(unixTime * 1000L);
-        SimpleDateFormat sdf;
-        if(includeTime) {
-            sdf = new java.text.SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());
-        }
-        else {
-            sdf = new java.text.SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
-        }
-
-        return sdf.format(dateOfBirth);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

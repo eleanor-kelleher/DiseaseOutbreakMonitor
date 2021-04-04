@@ -136,15 +136,10 @@ public class MainActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         long currentDate = cal.getTimeInMillis() / 1000L;
-        day = cal.get(Calendar.DAY_OF_MONTH) - 1;
-        long yesterday = cal.getTimeInMillis() / 1000L;
-        year = cal.get(Calendar.YEAR) - 20;
-        long twentyYearsAgo = cal.getTimeInMillis() / 1000L;
-        year = cal.get(Calendar.YEAR) - 30;
-        long thirtyYearsAgo = cal.getTimeInMillis() / 1000L;
 
-        PatientModel p1 = new PatientModel(1, "name1", 1, 2, currentDate, twentyYearsAgo, "female", 37.0, 120, 60, "unsure", "test comment1", "symptom1, symptom2");
-        PatientModel p2 = new PatientModel(2, "name2", 3, 4, yesterday, thirtyYearsAgo, "male", 36.9, 130, 90, "unsure", "test comment2", "symptom3, symptom4");
+
+        PatientModel p1 = new PatientModel(1, "name1", 1, 2, currentDate, "2001-10-25", "female", 37.0, 120, 60, "unsure", "test comment1", "symptom1, symptom2");
+        PatientModel p2 = new PatientModel(2, "name2", 3, 4, currentDate, "1992-02-14", "male", 36.9, 130, 90, "unsure", "test comment2", "symptom3, symptom4");
         DatabaseHelper dbHelper = new DatabaseHelper(MainActivity.this);
 
         dbHelper.addOne(p1);

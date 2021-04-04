@@ -15,8 +15,7 @@ import java.util.Locale;
 public class PatientEntryActivity extends AppCompatActivity {
 
     TextView tvName, tvSex, tvSymptoms, tvDisease, tvComment, tvDateOfBirth, tvDateCreated, tvBP, tvTemp;
-    String name, sex, symptoms, disease, comment;
-    long dateOfBirth, dateCreated;
+    long dateCreatedLong;
     int bpSystolic, bpDiastolic;
     double temperature;
 
@@ -43,11 +42,12 @@ public class PatientEntryActivity extends AppCompatActivity {
         tvSymptoms.setText(intent.getStringExtra(Constants.ENTRY_SYMPTOMS));
         tvDisease.setText(intent.getStringExtra(Constants.ENTRY_HW_DIAGNOSIS));
         tvComment.setText(intent.getStringExtra(Constants.ENTRY_COMMENT));
+        tvDateOfBirth.setText(intent.getStringExtra(Constants.ENTRY_DOB));
 
-        dateOfBirth = intent.getLongExtra(Constants.ENTRY_DOB, -1);
-        tvDateOfBirth.setText(getDateString(dateOfBirth, false));
-        dateCreated = intent.getLongExtra(Constants.ENTRY_DATE_CREATED, -1);
-        tvDateCreated.setText(getDateString(dateCreated, true));
+        dateCreatedLong = intent.getLongExtra(Constants.ENTRY_DATE_CREATED, -1);
+        Date dateCreated = new java.util.Date(dateCreatedLong * 1000L);
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("HH:mm yyyy-MM-dd", Locale.getDefault());
+        tvDateCreated.setText(sdf.format(dateCreated));
 
         bpSystolic = intent.getIntExtra(Constants.ENTRY_BP_SYSTOLIC, -1);
         bpDiastolic = intent.getIntExtra(Constants.ENTRY_BP_DIASTOLIC, -1);
@@ -55,19 +55,6 @@ public class PatientEntryActivity extends AppCompatActivity {
         tvBP.setText(bloodPressure);
         tvTemp.setText(String.valueOf(intent.getDoubleExtra(Constants.ENTRY_TEMP, -1)));
 
-    }
-
-    public String getDateString(long unixTime, boolean includeTime) {
-        Date dateOfBirth = new java.util.Date(unixTime * 1000L);
-        SimpleDateFormat sdf;
-        if(includeTime) {
-            sdf = new java.text.SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());
-        }
-        else {
-            sdf = new java.text.SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
-        }
-
-        return sdf.format(dateOfBirth);
     }
 
     public void exitEntryView (View view) {

@@ -52,7 +52,7 @@ public class ConfirmActivity extends AppCompatActivity {
         date = System.currentTimeMillis() / 1000L;
 
         Intent intent = getIntent();
-        patient.setDateOfBirth(intent.getLongExtra(Constants.DOB, -1));
+        patient.setDateOfBirth(intent.getStringExtra(Constants.DOB));
         patient.setSex(intent.getStringExtra(Constants.SEX));
         patient.setTemperatureCelsius(intent.getDoubleExtra(Constants.TEMP, -1));
         patient.setBloodPressureSystolic(intent.getIntExtra(Constants.BP_SYSTOLIC, -1));
@@ -141,7 +141,7 @@ public class ConfirmActivity extends AppCompatActivity {
     }
 
     public void fillSummaryTable() {
-        textViewDOB.setText(String.valueOf(patient.getDateOfBirth()));
+        textViewDOB.setText(patient.getDateOfBirth());
         textViewSex.setText(patient.getSex());
         textViewTemperature.setText(String.valueOf(patient.getTemperatureCelsius()));
         int bpSystolic = patient.getBloodPressureSystolic();

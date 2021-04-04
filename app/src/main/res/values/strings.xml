@@ -84,7 +84,7 @@
     <string name="temp_text_time">temp text date &amp; time</string>
     <string name="text_popup">Added this patient to the local database!</string>
     <string name="button_popup">OK</string>
-    <string name="hint_dob">dd/mm/yyyy </string>
+    <string name="hint_dob">YYYY/MM/DD </string>
     <string name="button_database">View Patients</string>
     <string name="patient_list_title">Patients Saved</string>
     <string name="no_entries">No entries found in the database.</string>

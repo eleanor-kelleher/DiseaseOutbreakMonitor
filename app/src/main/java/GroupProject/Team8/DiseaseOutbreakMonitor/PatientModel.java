@@ -10,7 +10,7 @@ public class PatientModel {
     private double longitude;
     private long date;
 
-    private long dateOfBirth;
+    private String dateOfBirth;
     private String sex;
     private double temperatureCelsius;
     private int bloodPressureSystolic;
@@ -20,7 +20,7 @@ public class PatientModel {
     private String symptoms;
 
     public PatientModel(int id, String name, double latitude, double longitude, long date,
-                        long dateOfBirth, String sex, double temperatureCelsius,
+                        String dateOfBirth, String sex, double temperatureCelsius,
                         int bloodPressureSystolic, int bloodPressureDiastolic, String disease,
                         String comment, String symptoms) {
         this.id = id;
@@ -81,11 +81,11 @@ public class PatientModel {
         this.date = date;
     }
 
-    public long getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(long dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -147,9 +147,9 @@ public class PatientModel {
     // Used this to test if patient details are correct at the confirmation activity (THEY ARE :) )
     public void printPatientDetails()
     {
-        Log.i("DOB:  ", String.valueOf(this.getDateOfBirth()));
+        Log.i("DOB: ", this.getDateOfBirth());
         Log.i("Sex: ", this.getSex());
-        Log.i("Temperature", String.valueOf(this.getTemperatureCelsius()));
+        Log.i("Temperature: ", String.valueOf(this.getTemperatureCelsius()));
         Log.i("Disease: ", this.getDisease());
         Log.i("Comment: ", this.getComment());
         Log.i("Symptoms: ", this.getSymptoms());

@@ -14,7 +14,10 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class PatientDetailsActivity extends AppCompatActivity {
 
@@ -22,7 +25,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
     Button buttonMale, buttonFemale, buttonUndisclosed, lastButtonClicked;
 
     int bloodPressureSystolic, bloodPressureDiastolic;
-    long dateOfBirth;
+    String dateOfBirth;
     String sex;
     double temperature;
 
@@ -63,13 +66,14 @@ public class PatientDetailsActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month += 1;
-                String date = dayOfMonth + "/" + month + "/" + year;
-                textViewDOB.setText(date);
                 Calendar cal = Calendar.getInstance();
                 cal.set(Calendar.YEAR, year);
                 cal.set(Calendar.MONTH, month);
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                dateOfBirth = cal.getTimeInMillis() / 1000L;
+                Date date = cal.getTime();
+                SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                dateOfBirth = sdf.format(date);
+                textViewDOB.setText(dateOfBirth);
             }
         };
 

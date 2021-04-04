@@ -17,7 +17,7 @@ val HIGH_TEMPERATURE_LOWER_BOUND = 38
 
 class SymptomsActivity : AppCompatActivity() {
 
-    var dateOfBirth = 0L
+    var dateOfBirth = ""
     var sex = ""
     var temperature = 0.0
     var bloodPressureSystolic = 0
@@ -30,7 +30,7 @@ class SymptomsActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val intent = intent
-        dateOfBirth = intent.getLongExtra(Constants.DOB, -1)
+        dateOfBirth = intent.getStringExtra(Constants.DOB).toString()
         sex = intent.getStringExtra(Constants.SEX).toString()
 
         // blood pressure is read as Systolic over Diastolic, e.g. 132/88 mmHg
