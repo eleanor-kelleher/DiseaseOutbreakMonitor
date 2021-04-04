@@ -11,8 +11,12 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PATIENT_TABLE = "PATIENT_TABLE";
     public static final String CLMN_USER_ID = "USER_ID";
+    public static final String CLMN_NAME = "NAME";
+    public static final String CLMN_DOB = "DATE_OF_BIRTH";
     public static final String CLMN_SYMPTOMS = "SYMPTOMS";
     public static final String CLMN_TEMPERATURE_C = "TEMPERATURE_C";
+    public static final String CLMN_BP_SYSTOLIC = "BP_SYSTOLIC";
+    public static final String CLMN_BP_DIASTOLIC = "BP_DIASTOLIC";
     public static final String CLMN_SEX = "SEX";
     public static final String CLMN_DISEASE = "DISEASE";
     public static final String CLMN_COMMENT = "COMMENT";
@@ -29,9 +33,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTableStatement = "CREATE TABLE " + PATIENT_TABLE
                 + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + CLMN_USER_ID + " INT, "
-                + CLMN_SYMPTOMS + " TEXT, "
-                + CLMN_TEMPERATURE_C + " REAL, "
+                + CLMN_NAME + " TEXT, "
+                + CLMN_DOB + " INT, "
                 + CLMN_SEX + " TEXT, "
+                + CLMN_BP_SYSTOLIC + " INT, "
+                + CLMN_BP_DIASTOLIC + " INT, "
+                + CLMN_TEMPERATURE_C + " REAL, "
+                + CLMN_SYMPTOMS + " TEXT, "
                 + CLMN_DISEASE + " TEXT, "
                 + CLMN_COMMENT + " TEXT, "
                 + CLMN_LATITUDE + " REAL, "
@@ -42,7 +50,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + PATIENT_TABLE);
+        onCreate(db);
     }
 
     public boolean addOne (PatientModel patientModel) {
@@ -50,9 +59,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(CLMN_USER_ID, patientModel.getId());
-        cv.put(CLMN_SYMPTOMS, patientModel.getSymptoms());
-        cv.put(CLMN_TEMPERATURE_C, patientModel.getTemperatureCelsius());
+        cv.put(CLMN_NAME, patientModel.getName());
+        cv.put(CLMN_DOB, patientModel.getDateOfBirth());
         cv.put(CLMN_SEX, patientModel.getSex());
+        cv.put(CLMN_BP_SYSTOLIC, patientModel.getBloodPressureSystolic());
+        cv.put(CLMN_BP_DIASTOLIC, patientModel.getBloodPressureDiastolic());
+        cv.put(CLMN_TEMPERATURE_C, patientModel.getTemperatureCelsius());
+        cv.put(CLMN_SYMPTOMS, patientModel.getSymptoms());
         cv.put(CLMN_DISEASE, patientModel.getDisease());
         cv.put(CLMN_COMMENT, patientModel.getComment());
         cv.put(CLMN_LATITUDE, patientModel.getLatitude());
@@ -70,6 +83,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.close();
         }
         return true;
-
     }
 }
