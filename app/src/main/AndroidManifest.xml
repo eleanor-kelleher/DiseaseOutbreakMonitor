@@ -13,23 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DiseaseOutbreakMonitor">
-        <activity android:name=".PatientListActivity"></activity>
+        <activity android:name=".PatientEntryActivity"></activity>
+        <activity android:name=".PatientListActivity" />
         <activity
             android:name=".TemperatureAndBPActivity"
-            android:label="@string/temp_bp_activity_title"></activity>
-        <activity android:name=".SignInActivity"></activity>
+            android:label="@string/temp_bp_activity_title" />
+        <activity android:name=".SignInActivity" />
         <activity
             android:name=".ConfirmActivity"
-            android:label="@string/confirm_activity_title"></activity>
+            android:label="@string/confirm_activity_title" />
         <activity
             android:name=".SymptomsActivity"
-            android:label="@string/symptom_activity_title"></activity>
+            android:label="@string/symptom_activity_title" />
         <activity
             android:name=".DiagnosisActivity"
-            android:label="@string/hw_diagnosis_title"></activity>
+            android:label="@string/hw_diagnosis_title" />
         <activity
             android:name=".PatientDetailsActivity"
-            android:label="@string/patient_details_title"></activity>
+            android:label="@string/patient_details_title" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -2,6 +2,7 @@ package GroupProject.Team8.DiseaseOutbreakMonitor;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -35,13 +39,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         ContentValues currentPatient = patientList.get(position);
+
         holder.textViewName.setText(currentPatient.getAsString("NAME"));
-        holder.textViewDOB.setText(currentPatient.getAsString("DOB"));
-        holder.textViewDateCreated.setText(currentPatient.getAsString("DATE_CREATED"));
+        String dateOfBirth = getDateString(currentPatient.getAsLong("DOB"), false);
+        holder.textViewDOB.setText(dateOfBirth);
+        String dateCreated = "Date Created: " + getDateString(currentPatient.getAsLong("DATE_CREATED"), true);
+
+        holder.textViewDateCreated.setText(dateCreated);
 
         // lambda function for OnClickListener
         holder.rowLayout.setOnClickListener(v -> {
-            // GO TO POPUP DIALOG
+            Intent intent = new Intent(context, PatientEntryActivity.class);
+            intent.putExtra(Constants.ENTRY_NAME, currentPatient.getAsString("NAME"));
+            intent.putExtra(Constants.ENTRY_DOB, currentPatient.getAsLong("DOB"));
+            intent.putExtra(Constants.ENTRY_SEX, currentPatient.getAsString("SEX"));
+            intent.putExtra(Constants.ENTRY_TEMP, currentPatient.getAsDouble("TEMPERATURE_C"));
+            intent.putExtra(Constants.ENTRY_BP_SYSTOLIC, currentPatient.getAsInteger("BP_SYSTOLIC"));
+            intent.putExtra(Constants.ENTRY_BP_DIASTOLIC, currentPatient.getAsInteger("BP_DIASTOLIC"));
+            intent.putExtra(Constants.ENTRY_HW_DIAGNOSIS, currentPatient.getAsString("DISEASE"));
+            intent.putExtra(Constants.ENTRY_SYMPTOMS, currentPatient.getAsString("SYMPTOMS"));
+            intent.putExtra(Constants.ENTRY_COMMENT, currentPatient.getAsString("COMMENT"));
+            intent.putExtra(Constants.ENTRY_DATE_CREATED, currentPatient.getAsLong("DATE_CREATED"));
+            context.startActivity(intent);
         });
     }
 
@@ -50,6 +69,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return patientList.size();
     }
 
+    public String getDateString(long unixTime, boolean includeTime) {
+        Date dateOfBirth = new java.util.Date(unixTime * 1000L);
+        SimpleDateFormat sdf;
+        if(includeTime) {
+            sdf = new java.text.SimpleDateFormat("HH:mm dd/MM/yyyy", Locale.getDefault());
+        }
+        else {
+            sdf = new java.text.SimpleDateFormat("dd MMM yyyy", Locale.getDefault());
+        }
+
+        return sdf.format(dateOfBirth);
+    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -64,4 +95,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             rowLayout = itemView.findViewById(R.id.rowLayout);
         }
     }
+
+
 }

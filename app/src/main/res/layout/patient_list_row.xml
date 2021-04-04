@@ -30,43 +30,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/temp_text_name"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewRowDOB"
-                app:layout_constraintEnd_toStartOf="@+id/textViewRowDOB"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textViewRowDOB" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewRowDOB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
-                android:layout_marginLeft="44dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
                 android:text="@string/temp_text_dob"
                 android:textSize="18sp"
-                android:textStyle="italic"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textViewRowName"
-                tools:layout_editor_absoluteY="12dp" />
+                app:layout_constraintStart_toStartOf="@+id/textViewRowName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRowName" />
 
             <TextView
                 android:id="@+id/textViewRowDateCreated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/temp_text_time"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewRowName" />
+                app:layout_constraintStart_toStartOf="@+id/textViewRowDOB"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRowDOB" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

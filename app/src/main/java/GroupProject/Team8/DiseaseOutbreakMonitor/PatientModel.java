@@ -19,10 +19,23 @@ public class PatientModel {
     private String comment;
     private String symptoms;
 
-    public PatientModel(long date, int dateOfBirth, String sex) {
+    public PatientModel(int id, String name, double latitude, double longitude, long date,
+                        long dateOfBirth, String sex, double temperatureCelsius,
+                        int bloodPressureSystolic, int bloodPressureDiastolic, String disease,
+                        String comment, String symptoms) {
+        this.id = id;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.date = date;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
+        this.temperatureCelsius = temperatureCelsius;
+        this.bloodPressureSystolic = bloodPressureSystolic;
+        this.bloodPressureDiastolic = bloodPressureDiastolic;
+        this.disease = disease;
+        this.comment = comment;
+        this.symptoms = symptoms;
     }
 
     public PatientModel() {

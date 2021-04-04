@@ -18,6 +18,7 @@
     <string name="text_diagnosis">Health Worker Diagnosis: </string>
     <string name="text_comment">Further Comments: </string>
     <string name="text_patient_symptoms">Patient Symptoms: </string>
+    <string name="date_created_prefix">Date Created: </string>
 
     <string name="button_add_patient">Add new patient</string>
     <string name="button_male">Male</string>
@@ -87,4 +88,5 @@
     <string name="button_database">View Patients</string>
     <string name="patient_list_title">Patients Saved</string>
     <string name="no_entries">No entries found in the database.</string>
+    <string name="temp_date">HH:mm dd/MM/yyyy</string>
 </resources>

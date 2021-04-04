@@ -25,7 +25,6 @@ public class PatientListActivity extends AppCompatActivity {
 
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
-    private AlertDialog patientEntry;
     TextView textViewPopup;
     Button buttonPopup;
 
