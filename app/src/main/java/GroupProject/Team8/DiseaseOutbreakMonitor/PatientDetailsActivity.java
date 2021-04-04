@@ -2,23 +2,31 @@ package GroupProject.Team8.DiseaseOutbreakMonitor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class PatientDetailsActivity extends AppCompatActivity {
 
-    EditText editTextAge;
+    TextView textViewDOB;
     Button buttonMale, buttonFemale, buttonUndisclosed, lastButtonClicked;
 
-    int age, bloodPressureSystolic, bloodPressureDiastolic;
+    int bloodPressureSystolic, bloodPressureDiastolic;
+    long dateOfBirth;
     String sex;
     double temperature;
+
+    private DatePickerDialog.OnDateSetListener dateSetListener;
 
     /*
         patient.setAge(intent.getIntExtra(Constants.AGE, -1));
@@ -31,17 +39,42 @@ public class PatientDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        editTextAge = findViewById(R.id.editTextAge);
         buttonMale = findViewById(R.id.buttonMale);
         buttonFemale = findViewById(R.id.buttonFemale);
         buttonUndisclosed = findViewById(R.id.buttonUndisclosed);
         lastButtonClicked = findViewById(R.id.buttonMale);
+        textViewDOB = findViewById(R.id.textViewDOB);
+        textViewDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR) - 25;
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(PatientDetailsActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth, dateSetListener, year, month, day);
+                dialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+        dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month += 1;
+                String date = dayOfMonth + "/" + month + "/" + year;
+                textViewDOB.setText(date);
+                Calendar cal = Calendar.getInstance();
+                cal.set(Calendar.YEAR, year);
+                cal.set(Calendar.MONTH, month);
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                dateOfBirth = cal.getTimeInMillis() / 1000L;
+            }
+        };
 
         Intent intent = getIntent();
         if (intent.getExtras() != null){
-            if (intent.getIntExtra(Constants.AGE, -1) != -1){
-                editTextAge.setText(Integer.toString(intent.getIntExtra(Constants.AGE, -1)));
-            }
             if (intent.getStringExtra(Constants.SEX) != null){
                 sex = intent.getStringExtra(Constants.SEX);
             }
@@ -60,15 +93,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
-        if (!TextUtils.isEmpty(editTextAge.getText())) {
-            age = Integer.parseInt(editTextAge.getText().toString());
-            if (age < 0 || age > 120) {
-                editTextAge.setError("Please input an age between 0 and 120");
-            }
-            else {
-                intent.putExtra(Constants.AGE, age);
-            }
-        }
+
         if (sex != null && !sex.isEmpty()) {
             intent.putExtra(Constants.SEX, sex);
         }
@@ -101,21 +126,22 @@ public class PatientDetailsActivity extends AppCompatActivity {
     public void confirmPatientDetails(View view) {
 
         Intent intent = new Intent(this, TemperatureAndBPActivity.class);
-        boolean ageFilled, sexFilled = false;
+        boolean ageFilled = true;
+        boolean sexFilled = false;
 
-        if(TextUtils.isEmpty(editTextAge.getText())){
-            Toast.makeText(PatientDetailsActivity.this, "Please enter an age", Toast.LENGTH_SHORT).show();
-            editTextAge.setError( "Age is required");
-            ageFilled = false;
-        }
-        else {
-            age = Integer.parseInt(editTextAge.getText().toString());
-            if (age < 0 || age > 120) {
-                editTextAge.setError("Please input an age between 0 and 120");
-                ageFilled = false;
-            }
-            else { ageFilled = true; }
-        }
+//        if(TextUtils.isEmpty(editTextAge.getText())){
+//            Toast.makeText(PatientDetailsActivity.this, "Please enter an age", Toast.LENGTH_SHORT).show();
+//            editTextAge.setError( "Age is required");
+//            ageFilled = false;
+//        }
+//        else {
+//            age = Integer.parseInt(editTextAge.getText().toString());
+//            if (age < 0 || age > 120) {
+//                editTextAge.setError("Please input an age between 0 and 120");
+//                ageFilled = false;
+//            }
+//            else { ageFilled = true; }
+//        }
 
         if( sex == null || sex.isEmpty()){
             Toast.makeText(PatientDetailsActivity.this, "Please select a sex", Toast.LENGTH_SHORT).show();
@@ -125,7 +151,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
             sexFilled = true;
         }
         if(ageFilled && sexFilled) {
-            intent.putExtra(Constants.AGE, age);
+            intent.putExtra(Constants.DOB, dateOfBirth);
             intent.putExtra(Constants.SEX, sex);
             if ( bloodPressureSystolic > 0) {
                 intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);

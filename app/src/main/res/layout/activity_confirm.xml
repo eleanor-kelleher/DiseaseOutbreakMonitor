@@ -55,7 +55,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="0dp"
                     android:layout_marginLeft="5dp"
-                    android:text="@string/text_age"
+                    android:text="@string/text_dob"
                     android:textColor="@color/app_turquoise"
                     android:textSize="22sp"
                     android:textStyle="bold" />

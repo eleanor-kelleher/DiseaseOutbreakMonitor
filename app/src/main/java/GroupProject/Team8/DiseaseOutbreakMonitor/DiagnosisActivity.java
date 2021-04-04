@@ -17,7 +17,8 @@ public class DiagnosisActivity extends AppCompatActivity {
     RadioGroup radioGroupDiseases;
     RadioButton radioCholera, radioPolio, radioMeasles, radioUnsure;
     EditText editTextComment;
-    int age, bloodPressureSystolic, bloodPressureDiastolic;
+    int bloodPressureSystolic, bloodPressureDiastolic;
+    long dateOfBirth;
     double temperature;
     String sex, comment, disease, symptoms;
 
@@ -36,7 +37,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         editTextComment = findViewById(R.id.editTextComments);
 
         Intent intent = getIntent();
-        age = intent.getIntExtra(Constants.AGE, -1);
+        dateOfBirth = intent.getLongExtra(Constants.DOB, -1);
         sex = intent.getStringExtra(Constants.SEX);
         bloodPressureSystolic = intent.getIntExtra(Constants.BP_SYSTOLIC, -1);
         bloodPressureDiastolic = intent.getIntExtra(Constants.BP_DIASTOLIC, -1);
@@ -47,14 +48,14 @@ public class DiagnosisActivity extends AppCompatActivity {
         // more error handling for other data fields needed
         // ***
 
-        if (age == -1) {
+        if (dateOfBirth == -1) {
             Toast.makeText(DiagnosisActivity.this, "Error getting patient age. Please try again.", Toast.LENGTH_LONG).show();
         }
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(getApplicationContext(), SymptomsActivity.class);
-        intent.putExtra(Constants.AGE, age);
+        intent.putExtra(Constants.DOB, dateOfBirth);
         intent.putExtra(Constants.SEX, sex);
         intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);
         intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic);
@@ -83,7 +84,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         }
 
         Intent intent = new Intent(this, ConfirmActivity.class);
-        intent.putExtra(Constants.AGE, age);
+        intent.putExtra(Constants.DOB, dateOfBirth);
         intent.putExtra(Constants.SEX, sex);
         intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);
         intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic);

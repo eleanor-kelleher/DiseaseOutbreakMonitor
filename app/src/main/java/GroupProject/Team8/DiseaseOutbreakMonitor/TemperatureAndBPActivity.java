@@ -10,13 +10,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 public class TemperatureAndBPActivity extends AppCompatActivity {
 
     EditText editTextTemperature, editTextBloodPressureSystolic, editTextBloodPressureDiastolic;
     double temperature;
-    int age, bloodPressureSystolic, bloodPressureDiastolic;
+    int bloodPressureSystolic, bloodPressureDiastolic;
+    long dateOfBirth;
     boolean tempFilled, bpSystolicFilled, bpDiastolicFilled = false;
     String sex;
 
@@ -32,7 +31,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
         editTextBloodPressureDiastolic = findViewById(R.id.editTextBloodPressureDiastolic);
 
         Intent intent = getIntent();
-        age = intent.getIntExtra(Constants.AGE, -1);
+        dateOfBirth = intent.getLongExtra(Constants.DOB, -1);
         sex = intent.getStringExtra(Constants.SEX);
 
         if (intent.getIntExtra(Constants.BP_SYSTOLIC, -1) != -1){
@@ -49,7 +48,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(getApplicationContext(), PatientDetailsActivity.class);
-        intent.putExtra(Constants.AGE, age);
+        intent.putExtra(Constants.DOB, dateOfBirth);
         intent.putExtra(Constants.SEX, sex);
         if (!TextUtils.isEmpty(editTextTemperature.getText())) {
             intent.putExtra(Constants.TEMP, Double.parseDouble(editTextTemperature.getText().toString()));
@@ -117,7 +116,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
             //bloodPressureDiastolic = Integer.parseInt(editTextBloodPressureDiastolic.getText().toString());
 
             Intent intent = new Intent(this, SymptomsActivity.class);
-            intent.putExtra(Constants.AGE, age);
+            intent.putExtra(Constants.DOB, dateOfBirth);
             intent.putExtra(Constants.SEX, sex);
             intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);
             intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic);

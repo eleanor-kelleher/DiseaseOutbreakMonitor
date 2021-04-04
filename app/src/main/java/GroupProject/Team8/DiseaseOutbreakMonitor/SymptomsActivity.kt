@@ -6,7 +6,6 @@ import GroupProject.Team8.DiseaseOutbreakMonitor.adapter.checkBoxStateArray
 import GroupProject.Team8.DiseaseOutbreakMonitor.data.Datasource
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +17,7 @@ val HIGH_TEMPERATURE_LOWER_BOUND = 38
 
 class SymptomsActivity : AppCompatActivity() {
 
-    var age = 0
+    var dateOfBirth = 0L
     var sex = ""
     var temperature = 0.0
     var bloodPressureSystolic = 0
@@ -31,7 +30,7 @@ class SymptomsActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val intent = intent
-        age = intent.getIntExtra(Constants.AGE, -1)
+        dateOfBirth = intent.getLongExtra(Constants.DOB, -1)
         sex = intent.getStringExtra(Constants.SEX).toString()
 
         // blood pressure is read as Systolic over Diastolic, e.g. 132/88 mmHg
@@ -100,7 +99,7 @@ class SymptomsActivity : AppCompatActivity() {
         // USED THIS FOR TESTING ---- CHECK SOME BOXES, GO BACK TO PREVIOUS SCREEN, SEE RESULT IN LOGCAT CONSOLE
         //Log.i("Symptoms String: ", generateSymptomsString())
         val intent = Intent(applicationContext, TemperatureAndBPActivity::class.java)
-        intent.putExtra(Constants.AGE, age)
+        intent.putExtra(Constants.DOB, dateOfBirth)
         intent.putExtra(Constants.SEX, sex)
         intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic)
         intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic)
@@ -111,7 +110,7 @@ class SymptomsActivity : AppCompatActivity() {
 
     fun confirmSymptoms(view: View) {
         val intent = Intent(this, DiagnosisActivity::class.java)
-        intent.putExtra(Constants.AGE, age)
+        intent.putExtra(Constants.DOB, dateOfBirth)
         intent.putExtra(Constants.SEX, sex)
         intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic)
         intent.putExtra(Constants.BP_DIASTOLIC, bloodPressureDiastolic)

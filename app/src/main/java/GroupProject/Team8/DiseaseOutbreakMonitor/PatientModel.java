@@ -5,11 +5,12 @@ import android.util.Log;
 public class PatientModel {
 
     private int id;
+    private String name;
     private double latitude;
     private double longitude;
     private long date;
 
-    private int age;
+    private long dateOfBirth;
     private String sex;
     private double temperatureCelsius;
     private int bloodPressureSystolic;
@@ -18,9 +19,9 @@ public class PatientModel {
     private String comment;
     private String symptoms;
 
-    public PatientModel(long date, int age, String sex) {
+    public PatientModel(long date, int dateOfBirth, String sex) {
         this.date = date;
-        this.age = age;
+        this.dateOfBirth = dateOfBirth;
         this.sex = sex;
     }
 
@@ -33,6 +34,14 @@ public class PatientModel {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getLatitude() {
@@ -59,12 +68,12 @@ public class PatientModel {
         this.date = date;
     }
 
-    public int getAge() {
-        return age;
+    public long getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setDateOfBirth(long dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getSex() {
@@ -125,12 +134,11 @@ public class PatientModel {
     // Used this to test if patient details are correct at the confirmation activity (THEY ARE :) )
     public void printPatientDetails()
     {
-        Log.i("Age:  ", String.valueOf(this.getAge()));
+        Log.i("DOB:  ", String.valueOf(this.getDateOfBirth()));
         Log.i("Sex: ", this.getSex());
         Log.i("Temperature", String.valueOf(this.getTemperatureCelsius()));
         Log.i("Disease: ", this.getDisease());
         Log.i("Comment: ", this.getComment());
         Log.i("Symptoms: ", this.getSymptoms());
     }
-
 }

@@ -27,14 +27,19 @@
         android:id="@+id/editTextFirstName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:ems="8"
         android:inputType="number"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/textFirstName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textFirstName"
         app:layout_constraintTop_toTopOf="@+id/textFirstName"
         app:layout_constraintVertical_bias="0.521"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="152dp" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textDOB"
@@ -49,7 +54,7 @@
         android:textColor="@color/app_turquoise"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/editTextDOB1"
+        app:layout_constraintEnd_toStartOf="@+id/textViewDOB"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textFirstName" />
@@ -72,66 +77,18 @@
 
     -->
 
-    <EditText
-        android:id="@+id/editTextDOB1"
-        android:layout_width="65dp"
-        android:layout_height="50dp"
+    <TextView
+        android:id="@+id/textViewDOB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:ems="5"
+        android:hint="@string/hint_dob"
         android:inputType="number"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/textDOB"
+        app:layout_constraintEnd_toEndOf="@+id/editTextFirstName"
         app:layout_constraintStart_toStartOf="@+id/editTextFirstName"
         app:layout_constraintTop_toTopOf="@id/textDOB" />
-
-    <EditText
-        android:id="@+id/editTextDOB2"
-        android:layout_width="65dp"
-        android:layout_height="50dp"
-        android:ems="5"
-        android:inputType="number"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextDOB1"
-        app:layout_constraintStart_toEndOf="@+id/textSlash2"
-        app:layout_constraintTop_toTopOf="@+id/editTextDOB1"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/editTextDOB3"
-        android:layout_width="65dp"
-        android:layout_height="50dp"
-        android:ems="5"
-        android:inputType="number"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextDOB1"
-        app:layout_constraintStart_toEndOf="@+id/textSlash3"
-        app:layout_constraintTop_toTopOf="@+id/editTextDOB1"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textSlash2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/text_slash"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextDOB1"
-        app:layout_constraintEnd_toStartOf="@+id/editTextDOB2"
-        app:layout_constraintStart_toEndOf="@+id/editTextDOB1"
-        app:layout_constraintTop_toTopOf="@+id/editTextDOB1" />
-
-    <TextView
-        android:id="@+id/textSlash3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/text_slash"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextDOB1"
-        app:layout_constraintEnd_toStartOf="@+id/editTextDOB3"
-        app:layout_constraintStart_toEndOf="@+id/editTextDOB2"
-        app:layout_constraintTop_toTopOf="@+id/editTextDOB1" />
 
     <TextView
         android:id="@+id/textSex"
@@ -161,7 +118,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/editTextFirstName"
-        app:layout_constraintStart_toEndOf="@+id/textFirstName"
+        app:layout_constraintStart_toStartOf="@+id/textViewDOB"
         app:layout_constraintTop_toTopOf="@+id/textSex" />
 
     <Button

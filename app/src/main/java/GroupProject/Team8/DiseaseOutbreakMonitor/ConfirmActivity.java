@@ -52,7 +52,7 @@ public class ConfirmActivity extends AppCompatActivity {
         date = System.currentTimeMillis() / 1000L;
 
         Intent intent = getIntent();
-        patient.setAge(intent.getIntExtra(Constants.AGE, -1));
+        patient.setAge(intent.getIntExtra(Constants.DOB, -1));
         patient.setSex(intent.getStringExtra(Constants.SEX));
         patient.setTemperatureCelsius(intent.getDoubleExtra(Constants.TEMP, -1));
         patient.setBloodPressureSystolic(intent.getIntExtra(Constants.BP_SYSTOLIC, -1));
@@ -93,7 +93,7 @@ public class ConfirmActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(getApplicationContext(), DiagnosisActivity.class);
-        intent.putExtra(Constants.AGE, patient.getAge());
+        intent.putExtra(Constants.DOB, patient.getAge());
         intent.putExtra(Constants.SEX, patient.getSex());
         intent.putExtra(Constants.BP_SYSTOLIC, patient.getBloodPressureSystolic());
         intent.putExtra(Constants.BP_DIASTOLIC, patient.getBloodPressureDiastolic());

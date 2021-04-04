@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 
 import java.io.BufferedReader;
@@ -39,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = getIntent();
                 if (intent.getExtras() != null){
-                    if (intent.getIntExtra(Constants.AGE, -1) != -1){
-                        age = intent.getIntExtra(Constants.AGE, -1);
+                    if (intent.getIntExtra(Constants.DOB, -1) != -1){
+                        age = intent.getIntExtra(Constants.DOB, -1);
                     }
                     if (intent.getStringExtra(Constants.SEX) != null){
                         sex = intent.getStringExtra(Constants.SEX);
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     public void addNewPatient(View view) {
         Intent intent = new Intent(this, PatientDetailsActivity.class);
         if (age > 0) {
-            intent.putExtra(Constants.AGE, age);
+            intent.putExtra(Constants.DOB, age);
         }
         if (sex != null && !sex.isEmpty()) {
             intent.putExtra(Constants.SEX, sex);

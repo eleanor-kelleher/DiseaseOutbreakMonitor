@@ -81,4 +81,5 @@
     <string name="temp_text_symptoms">temp text symptoms</string>
     <string name="text_popup">Added this patient to the local database!</string>
     <string name="button_popup">OK</string>
+    <string name="hint_dob">dd/mm/yyyy </string>
 </resources>
