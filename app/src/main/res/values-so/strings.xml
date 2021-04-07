@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">Epitrack</string>
+    <string name="sign_in_activity_title">Shaqaale Caafimaad Ayaa Soo Galay</string>
+    <string name="temp_bp_activity_title">Calaamadaha Muhiimka Ah</string>
+    <string name="symptom_activity_title">Calaamadaha Bukaanka</string>
+    <string name="patient_details_title">Faahfaahinta Bukaanka</string>
+    <string name="diagnosis_title">Ogaaanshaha Shaqaalaha Caafimaadka</string>
+    <string name="hw_diagnosis_title">Ogaaanshaha Shaqaalaha Caafimaadka</string>
+    <string name="confirm_activity_title">Faahfaahin Xaqiiji</string>
+    <string name="welcome_message">Soo Dhawow!</string>
+
+    <string name="text_first_name">Magaca Hore: </string>
+    <string name="text_dob">Dhalasho: </string>
+    <string name="text_sex">Wasmo: </string>
+    <string name="text_location">Goobta: </string>
+    <string name="text_temperature">Heerkulka ("\u2103"): </string>
+    <string name="text_blood_pressure">Dhiig Kar (mmHg): </string>
+    <string name="text_diagnosis">Ogaaanshaha Shaqaalaha Caafimaadka: </string>
+    <string name="text_comment">Faallooyin Dheeraad Ah: </string>
+    <string name="text_patient_symptoms">Calaamadaha Bukaanka: </string>
+    <string name="date_created_prefix">Taariikhda La Abuuray: </string>
+
+    <string name="button_add_patient">Kudar Bukaan Cusub</string>
+    <string name="button_male">Lab Ah</string>
+    <string name="button_female">Dhadig</string>
+    <string name="button_undisclosed">Aan La Shaacin</string>
+    <string name="button_next">Soo Socda</string>
+    <string name="button_new_patient">Bukaan Cusub</string>
+    <string name="button_confirm">Faahfaahin Xaqiiji</string>
+
+    <string name="radio_cholera">Daacuun</string>
+    <string name="radio_polio">Cudurka Dabay</string>
+    <string name="radio_measles">Jadeecada</string>
+    <string name="radio_unsure">Hubin</string>
+
+    // symptoms in alphabetical order
+    <string name="checkbox_conjunctivitis">Conjunctivitis</string>
+    <string name="checkbox_cough">Qufac</string>
+    <string name="checkbox_dehydration">Fuuqbax</string>
+    <string name="checkbox_Diarrhea">Shuban</string>
+    <string name="checkbox_dry_mucous_membranes">Xuub Xuub Qallalan</string>
+    <string name="checkbox_fatigue">Daal</string>
+    <string name="checkbox_fever">Qandho</string>
+    <string name="checkbox_headache">Madaz Xanuun</string>
+    <string name="checkbox_irritability">Xanaap</string>
+    <string name="checkbox_koplik_spots">Baro Kolpik</string>
+    <string name="checkbox_leg_cramps">Lugo Xanuun</string>
+    <string name="checkbox_loss_of_skin_elasticity">Luminta Dabacsanaanta Maqaarka</string>
+    <string name="checkbox_low_blood_pressure">Cadaadis Dhiig oo Hooseeya</string>
+    <string name="checkbox_nausea">Lallabbo</string>
+    <string name="checkbox_paralysis">Curyaanimo</string>
+    <string name="checkbox_Paresthesia">Suuxdinta</string>
+    <string name="checkbox_rapid_heart_rate">Garaaca Wadnaha oo Degdeg Ah</string>
+    <string name="checkbox_rash">Finan</string>
+    <string name="checkbox_restlessness">Degganaansho La’aan</string>
+    <string name="checkbox_runny_nose">Sanka oo Dareera</string>
+    <string name="checkbox_sore_throat">Cune Xanuun</string>
+    <string name="checkbox_stomach_pain">Calool Xanuun</string>
+    <string name="checkbox_thirst">Harraad</string>
+    <string name="checkbox_vomiting">Matagid</string>
+
+    // gps alert stuff
+    <string name="text_slash">/</string>
+    <string name="gps_alert_title">GPS Ma Awoodin</string>
+    <string name="gps_alert_message">Codsigan wuxuu u baahan yahay GPS in la shido. Fadlan daar GPS kahor intaadan sii wadin.</string>
+    <string name="gps_alert_confirm">OK</string>
+
+    // sign in stuff
+    <string name="button_sign_in">Soo Gal</string>
+    <string name="user_id_sign_in">Aqoonsiga Isticmaalaha:</string>
+    <string name="password_sign_in">Lambarka Sirta Ah:</string>
+
+    // summary strings
+    <string name="summary_text_temperature">Heerkulka: </string>
+    <string name="summary_text_blood_pressure">Dhiig Kar: </string>
+    <string name="temp_text_name">temp text name</string>
+    <string name="temp_text_dob">temp text dob</string>
+    <string name="temp_text_sex">temp text sex</string>
+    <string name="temp_text_temperature">temp</string>
+    <string name="temp_text_bp">temp bp</string>
+    <string name="temp_text_diagnosis">temp text diagnosis</string>
+    <string name="temp_text_comment">temp text comments</string>
+    <string name="temp_text_symptoms">temp text symptoms</string>
+    <string name="temp_text_time">temp text date &amp; time</string>
+    <string name="text_popup">Ku daray bukaankan keydka deegaanka!</string>
+    <string name="button_popup">OK</string>
+    <string name="hint_dob">YYYY/MM/DD </string>
+    <string name="button_database">Eeg Bukaanka</string>
+    <string name="patient_list_title">Bukaannada La Badbaadiyey</string>
+    <string name="no_entries">Wax galitaan lagama helin keydka macluumaadka.</string>
+    <string name="temp_date">HH:mm dd/MM/yyyy</string>
+</resources>
