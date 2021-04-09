@@ -153,5 +153,7 @@ public class PatientModel {
         Log.i("Disease: ", this.getDisease());
         Log.i("Comment: ", this.getComment());
         Log.i("Symptoms: ", this.getSymptoms());
+        Log.i("Latitude: ", String.valueOf(getLatitude()));
+        Log.i("Longtitude: ", String.valueOf(getLongitude()));
     }
 }
