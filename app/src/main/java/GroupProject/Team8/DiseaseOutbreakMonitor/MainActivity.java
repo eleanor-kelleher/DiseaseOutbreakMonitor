@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         // if GPS is enabled, continue to the next activity.
         // if GPS is NOT enabled, give an alert and don't let them proceed until GPS enabled.
-        /*
+
         if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             startActivity(intent);
         }
@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                     })
                     .show();
         }
-        */
         startActivity(intent);
     }
 

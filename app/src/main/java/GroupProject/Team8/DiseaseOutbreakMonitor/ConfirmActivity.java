@@ -88,27 +88,14 @@ public class ConfirmActivity extends AppCompatActivity {
         permissions
                 .request(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
                 .subscribe(granted -> {
-                   if (granted) {
-                       locationRequest = LocationRequest.create();
-                       locationRequest.setInterval(30000);
-                       locationRequest.setFastestInterval(5000);
-                       locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
-                       locationCallback = new LocationCallback() {
-                           @Override
-                           public void onLocationResult(@NonNull LocationResult locationResult) {
-                               super.onLocationResult(locationResult);
-                               saveLatAndLong(locationResult.getLastLocation());
-                           }
-                       };
-                   }
+                   if (granted) {   // automatically granted for api version < 23
+                       updateGPS();
+                     }
                    else {
                         // permission not granted
                        Log.i("permission: ", "not granted");
                    }
                 });
-
-
-        // updateGPS();
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -144,7 +131,6 @@ public class ConfirmActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(Location location) {
                     saveLatAndLong(location);
-
                 }
             });
         }
@@ -156,8 +142,11 @@ public class ConfirmActivity extends AppCompatActivity {
     }
 
     private void saveLatAndLong(Location location) {
-        patient.setLatitude(location.getLatitude());
-        patient.setLongitude(location.getLongitude());
+        if (location != null) {
+            patient.setLatitude(location.getLatitude());
+            patient.setLongitude(location.getLongitude());
+        }
+
     }
 
     public void fillSummaryTable() {
