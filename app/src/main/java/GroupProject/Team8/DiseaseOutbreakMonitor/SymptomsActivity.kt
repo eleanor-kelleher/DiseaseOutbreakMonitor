@@ -17,6 +17,7 @@ val HIGH_TEMPERATURE_LOWER_BOUND = 38
 
 class SymptomsActivity : AppCompatActivity() {
 
+    var firstName = ""
     var dateOfBirth = ""
     var sex = ""
     var temperature = 0.0
@@ -30,6 +31,7 @@ class SymptomsActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         val intent = intent
+        firstName = intent.getStringExtra(Constants.NAME).toString()
         dateOfBirth = intent.getStringExtra(Constants.DOB).toString()
         sex = intent.getStringExtra(Constants.SEX).toString()
 
@@ -99,6 +101,7 @@ class SymptomsActivity : AppCompatActivity() {
         // USED THIS FOR TESTING ---- CHECK SOME BOXES, GO BACK TO PREVIOUS SCREEN, SEE RESULT IN LOGCAT CONSOLE
         //Log.i("Symptoms String: ", generateSymptomsString())
         val intent = Intent(applicationContext, TemperatureAndBPActivity::class.java)
+        intent.putExtra(Constants.NAME, firstName)
         intent.putExtra(Constants.DOB, dateOfBirth)
         intent.putExtra(Constants.SEX, sex)
         intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic)
@@ -110,6 +113,7 @@ class SymptomsActivity : AppCompatActivity() {
 
     fun confirmSymptoms(view: View) {
         val intent = Intent(this, DiagnosisActivity::class.java)
+        intent.putExtra(Constants.NAME, firstName)
         intent.putExtra(Constants.DOB, dateOfBirth)
         intent.putExtra(Constants.SEX, sex)
         intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic)

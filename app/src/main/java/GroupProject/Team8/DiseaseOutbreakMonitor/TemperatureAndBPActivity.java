@@ -16,8 +16,9 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
     double temperature;
     int bloodPressureSystolic, bloodPressureDiastolic;
     String dateOfBirth;
-    boolean tempFilled, bpSystolicFilled, bpDiastolicFilled = false;
+    String firstName;
     String sex;
+    boolean tempFilled, bpSystolicFilled, bpDiastolicFilled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
         editTextBloodPressureDiastolic = findViewById(R.id.editTextBloodPressureDiastolic);
 
         Intent intent = getIntent();
+        firstName = intent.getStringExtra(Constants.NAME);
         dateOfBirth = intent.getStringExtra(Constants.DOB);
         sex = intent.getStringExtra(Constants.SEX);
 
@@ -48,6 +50,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(getApplicationContext(), PatientDetailsActivity.class);
+        intent.putExtra(Constants.NAME, firstName);
         intent.putExtra(Constants.DOB, dateOfBirth);
         intent.putExtra(Constants.SEX, sex);
         if (!TextUtils.isEmpty(editTextTemperature.getText())) {
@@ -116,6 +119,7 @@ public class TemperatureAndBPActivity extends AppCompatActivity {
             //bloodPressureDiastolic = Integer.parseInt(editTextBloodPressureDiastolic.getText().toString());
 
             Intent intent = new Intent(this, SymptomsActivity.class);
+            intent.putExtra(Constants.NAME, firstName);
             intent.putExtra(Constants.DOB, dateOfBirth);
             intent.putExtra(Constants.SEX, sex);
             intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);

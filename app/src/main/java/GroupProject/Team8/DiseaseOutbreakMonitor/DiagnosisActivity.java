@@ -18,6 +18,7 @@ public class DiagnosisActivity extends AppCompatActivity {
     RadioButton radioCholera, radioPolio, radioMeasles, radioUnsure;
     EditText editTextComment;
     int bloodPressureSystolic, bloodPressureDiastolic;
+    String firstName;
     String dateOfBirth;
     double temperature;
     String sex, comment, disease, symptoms;
@@ -37,6 +38,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         editTextComment = findViewById(R.id.editTextComments);
 
         Intent intent = getIntent();
+        firstName = intent.getStringExtra(Constants.NAME);
         dateOfBirth = intent.getStringExtra(Constants.DOB);
         sex = intent.getStringExtra(Constants.SEX);
         bloodPressureSystolic = intent.getIntExtra(Constants.BP_SYSTOLIC, -1);
@@ -52,6 +54,7 @@ public class DiagnosisActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item){
         Intent intent = new Intent(getApplicationContext(), SymptomsActivity.class);
+        intent.putExtra(Constants.NAME, firstName);
         intent.putExtra(Constants.DOB, dateOfBirth);
         intent.putExtra(Constants.SEX, sex);
         intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);
@@ -81,6 +84,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         }
 
         Intent intent = new Intent(this, ConfirmActivity.class);
+        intent.putExtra(Constants.NAME, firstName);
         intent.putExtra(Constants.DOB, dateOfBirth);
         intent.putExtra(Constants.SEX, sex);
         intent.putExtra(Constants.BP_SYSTOLIC, bloodPressureSystolic);

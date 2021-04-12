@@ -36,7 +36,7 @@ public class ConfirmActivity extends AppCompatActivity {
     private static final int PERMISSIONS_COARSE_LOCATION = 99;
     long date;
     PatientModel patient = new PatientModel();
-    TextView textViewDOB, textViewSex, textViewTemperature, textViewBloodPressure,
+    TextView textViewName, textViewDOB, textViewSex, textViewTemperature, textViewBloodPressure,
             textViewSymptoms, textViewComments, textViewDiagnosis;
     TextView textViewPopup;
     Button buttonPopup;
@@ -61,6 +61,7 @@ public class ConfirmActivity extends AppCompatActivity {
         date = System.currentTimeMillis() / 1000L;
 
         Intent intent = getIntent();
+        patient.setName(intent.getStringExtra(Constants.NAME));
         patient.setDateOfBirth(intent.getStringExtra(Constants.DOB));
         patient.setSex(intent.getStringExtra(Constants.SEX));
         patient.setTemperatureCelsius(intent.getDoubleExtra(Constants.TEMP, -1));
@@ -74,6 +75,7 @@ public class ConfirmActivity extends AppCompatActivity {
             patient.setComment(intent.getStringExtra(Constants.COMMENT));
         }
 
+        textViewName = findViewById(R.id.textNameFillable);
         textViewDOB = findViewById(R.id.textDOBFillable);
         textViewSex = findViewById(R.id.textSexFillable);
         textViewTemperature = findViewById(R.id.textTempFillable);
@@ -100,6 +102,7 @@ public class ConfirmActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(getApplicationContext(), DiagnosisActivity.class);
+        intent.putExtra(Constants.NAME, patient.getName());
         intent.putExtra(Constants.DOB, patient.getDateOfBirth());
         intent.putExtra(Constants.SEX, patient.getSex());
         intent.putExtra(Constants.BP_SYSTOLIC, patient.getBloodPressureSystolic());
@@ -150,6 +153,7 @@ public class ConfirmActivity extends AppCompatActivity {
     }
 
     public void fillSummaryTable() {
+        textViewName.setText(patient.getName());
         textViewDOB.setText(patient.getDateOfBirth());
         textViewSex.setText(patient.getSex());
         textViewTemperature.setText(String.valueOf(patient.getTemperatureCelsius()));

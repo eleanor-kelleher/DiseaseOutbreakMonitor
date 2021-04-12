@@ -7,10 +7,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +23,12 @@ import java.util.Locale;
 
 public class PatientDetailsActivity extends AppCompatActivity {
 
+    EditText editTextFirstName;
     TextView textViewDOB;
     Button buttonMale, buttonFemale, buttonUndisclosed, lastButtonClicked;
 
     int bloodPressureSystolic, bloodPressureDiastolic;
+    String firstName;
     String dateOfBirth;
     String sex;
     double temperature;
@@ -42,6 +46,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        editTextFirstName = findViewById(R.id.editTextFirstName);
         buttonMale = findViewById(R.id.buttonMale);
         buttonFemale = findViewById(R.id.buttonFemale);
         buttonUndisclosed = findViewById(R.id.buttonUndisclosed);
@@ -130,6 +135,7 @@ public class PatientDetailsActivity extends AppCompatActivity {
     public void confirmPatientDetails(View view) {
 
         Intent intent = new Intent(this, TemperatureAndBPActivity.class);
+        boolean nameFilled = false;
         boolean ageFilled = true;
         boolean sexFilled = false;
 
@@ -146,7 +152,13 @@ public class PatientDetailsActivity extends AppCompatActivity {
 //            }
 //            else { ageFilled = true; }
 //        }
-
+        if (TextUtils.isEmpty(editTextFirstName.getText())){
+            Toast.makeText(PatientDetailsActivity.this, "Please enter the patient's name", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            firstName = editTextFirstName.getText().toString();
+            nameFilled = true;
+        }
         if( sex == null || sex.isEmpty()){
             Toast.makeText(PatientDetailsActivity.this, "Please select a sex", Toast.LENGTH_SHORT).show();
             sexFilled = false;
@@ -154,7 +166,8 @@ public class PatientDetailsActivity extends AppCompatActivity {
         else {
             sexFilled = true;
         }
-        if(ageFilled && sexFilled) {
+        if(nameFilled && ageFilled && sexFilled) {
+            intent.putExtra(Constants.NAME, firstName);
             intent.putExtra(Constants.DOB, dateOfBirth);
             intent.putExtra(Constants.SEX, sex);
             if ( bloodPressureSystolic > 0) {
