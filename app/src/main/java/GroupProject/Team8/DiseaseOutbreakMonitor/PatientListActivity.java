@@ -18,6 +18,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -117,7 +118,7 @@ public class PatientListActivity extends AppCompatActivity {
         }
 
         // NEED TO GET REAL URL
-        String postUrl = "SERVER_URL/TEST/PATIENTSUBMIT";
+        String postUrl = "HOST/cases/bulk";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, postUrl,
                 patientsJSON, (Response.Listener<JSONArray>) response -> {
@@ -140,7 +141,31 @@ public class PatientListActivity extends AppCompatActivity {
 
         if (ACK) {
             dbHelper.deleteAll();
+            createNewDialog();
         }
+        else {
+            Toast.makeText(PatientListActivity.this, "Error sending data to server. Try again in a moment.",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void createNewDialog() {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View popupView = getLayoutInflater().inflate(R.layout.popup, null);
+        textViewPopup = popupView.findViewById(R.id.textViewPopupTitle);
+        textViewPopup.setText(R.string.text_popup_post);
+        buttonPopup = (Button) popupView.findViewById(R.id.textViewPopupButton);
+        dialogBuilder.setView(popupView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        buttonPopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

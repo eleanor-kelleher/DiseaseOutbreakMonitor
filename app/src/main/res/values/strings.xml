@@ -90,4 +90,5 @@
     <string name="no_entries">No entries found in the database.</string>
     <string name="temp_date">HH:mm dd/MM/yyyy</string>
     <string name="button_submit_patients">Submit patients to server</string>
+    <string name="text_popup_post">Patient data successfully sent to the server!</string>
 </resources>
