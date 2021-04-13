@@ -19,7 +19,20 @@ import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PatientListActivity extends AppCompatActivity {
 
@@ -27,10 +40,12 @@ public class PatientListActivity extends AppCompatActivity {
     private AlertDialog dialog;
     TextView textViewPopup;
     Button buttonPopup;
+    DatabaseHelper dbHelper;
 
     RecyclerView recyclerView;
     MyAdapter rvAdapter;
     ArrayList<ContentValues> patientList = new ArrayList<>();
+    boolean ACK = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +56,7 @@ public class PatientListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
         // instantiate access to the DB
-        DatabaseHelper dbHelper = new DatabaseHelper(PatientListActivity.this);
+        dbHelper = new DatabaseHelper(PatientListActivity.this);
 
 
         Intent intent = getIntent();
@@ -92,5 +107,69 @@ public class PatientListActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void submitToServer(View view) {
+        JSONArray patientsJSON = new JSONArray();
+        for(ContentValues patient : patientList) {
+            JSONObject object = cvToJSONObject(patient);
+            patientsJSON.put(object);
+        }
+
+        // NEED TO GET REAL URL
+        String postUrl = "SERVER_URL/TEST/PATIENTSUBMIT";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, postUrl,
+                patientsJSON, (Response.Listener<JSONArray>) response -> {
+            ACK = false;
+            try {
+                if (response.getString(0).equals("valid")){
+                    ACK = true;
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        requestQueue.add(jsonArrayRequest);
+
+        if (ACK) {
+            dbHelper.deleteAll();
+        }
+    }
+
+
+    public JSONObject cvToJSONObject(ContentValues cv) {
+        JSONObject patient = new JSONObject();
+        try {
+            patient.put("id", cv.getAsInteger("PATIENT_ID"));
+            patient.put("name", cv.getAsString("NAME"));
+            patient.put("dateOfBirth", cv.getAsString("DOB"));
+            patient.put("sex", cv.getAsString("SEX"));
+            patient.put("temperatureCelsius", cv.getAsDouble("TEMPERATURE_C"));
+            patient.put("bloodPressureSystolic", cv.getAsInteger("BP_SYSTOLIC"));
+            patient.put("bloodPressureDiastolic", cv.getAsInteger("BP_DIASTOLIC"));
+            patient.put("disease", cv.getAsString("DISEASE"));
+            String symptomsString = cv.getAsString("SYMPTOMS");
+            if(symptomsString != null || symptomsString.length() != 0) {
+                ArrayList<String> symptomsList;
+                symptomsList = (ArrayList<String>) Arrays.asList(symptomsString.split(", "));
+                JSONArray symptomsJSONArray = new JSONArray(symptomsList);
+                patient.put("symptoms", symptomsJSONArray);
+            }
+            else {
+                patient.put("symptoms", cv.getAsString("SYMPTOMS"));
+            }
+            patient.put("comment", cv.getAsString("COMMENT"));
+            patient.put("dateSubmitted", cv.getAsLong("DATE_CREATED"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return patient;
     }
 }

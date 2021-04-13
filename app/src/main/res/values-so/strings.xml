@@ -89,4 +89,5 @@
     <string name="patient_list_title">Bukaannada La Badbaadiyey</string>
     <string name="no_entries">Wax galitaan lagama helin keydka macluumaadka.</string>
     <string name="temp_date">HH:mm dd/MM/yyyy</string>
+    <string name="button_submit_patients">U dir bukaanada serverka</string>
 </resources>
