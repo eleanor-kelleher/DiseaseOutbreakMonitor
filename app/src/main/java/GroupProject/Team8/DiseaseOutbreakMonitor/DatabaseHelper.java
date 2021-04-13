@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PATIENT_TABLE = "PATIENT_TABLE";
-    public static final String CLMN_USER_ID = "USER_ID";
+    public static final String CLMN_PATIENT_ID = "PATIENT_ID";
     public static final String CLMN_NAME = "NAME";
     public static final String CLMN_DOB = "DOB";
     public static final String CLMN_SYMPTOMS = "SYMPTOMS";
@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement = "CREATE TABLE " + PATIENT_TABLE
                 + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + CLMN_USER_ID + " INT, "
+                + CLMN_PATIENT_ID + " INT, "
                 + CLMN_NAME + " TEXT, "
                 + CLMN_DOB + " TEXT, "
                 + CLMN_SEX + " TEXT, "
@@ -61,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(CLMN_USER_ID, patientModel.getId());
+        cv.put(CLMN_PATIENT_ID, patientModel.getId());
         cv.put(CLMN_NAME, patientModel.getName());
         cv.put(CLMN_DOB, patientModel.getDateOfBirth());
         cv.put(CLMN_SEX, patientModel.getSex());
@@ -115,4 +115,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return patientList;
     }
 
+    public void deleteAll()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        // db.delete(TABLE_NAME,null,null);
+        //db.execSQL("delete * from"+ TABLE_NAME);
+        db.execSQL("delete from "+ PATIENT_TABLE);
+        db.close();
+    }
 }

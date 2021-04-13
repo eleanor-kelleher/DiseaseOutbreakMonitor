@@ -71,7 +71,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 boolean isValidUser = false;
                 try {
-                    if (response.getString("response") == "valid"){
+                    if (response.getString("response").equals("valid")){
                         isValidUser = true;
                         String username = postData.getString("username");
                         String password = postData.getString("password");
