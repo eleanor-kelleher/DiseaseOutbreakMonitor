@@ -56,15 +56,13 @@ class SymptomsActivity : AppCompatActivity() {
             ---> Currently 'Stomach Pain' would be seperated into 'Stomach' and 'Pain' if we just use spaces to seperate
         Call This At The End of The Activity
      */
-    // LEFT SOME PRINT STATEMENTS USING Log.i(), INCASE ANYONE WANTS TO SEE HOW IT WORKS/TEST IT
-    fun generateSymptomsString(): String {
+    private fun generateSymptomsString(): String {
         val symptoms = Datasource().loadSymptoms()
         var checkedSymptoms = checkBoxStateArray    // from ItemAdapter.kt
 
         val keys = mutableListOf<Int>()
         var x = 0
         var y = 0
-        //Log.i("Checkbox State Array", checkedSymptoms.toString())   // PRINT TO CONSOLE
         // Get The Key Values of The Checked Boxes
         while (x < symptoms.size) {
             // IF box is checked THEN add key to list of keys
