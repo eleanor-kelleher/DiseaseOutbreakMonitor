@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +21,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Header;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,11 +29,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.loopj.android.http.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -197,4 +205,92 @@ public class PatientListActivity extends AppCompatActivity {
         }
         return patient;
     }
+
+    private String readCredentialsFile() throws IOException {
+        String result = "";
+        if (fileExists(Constants.CREDENTIALS_FILE_NAME))
+        {
+            InputStream inputStream = openFileInput(Constants.CREDENTIALS_FILE_NAME);
+            if(inputStream != null)
+            {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String temp = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while((temp = bufferedReader.readLine()) != null)
+                {
+                    stringBuilder.append(temp);
+                    stringBuilder.append("\n");
+                }
+
+                inputStream.close();
+                result = stringBuilder.toString();
+            }
+        }
+        Log.i("result", result);
+        return result;
+    }
+
+    public boolean fileExists(String filename)
+    {
+        File file = getBaseContext().getFileStreamPath(filename);
+        return file.exists();
+    }
+
+    public void submitToServerBasicAuth(View view) throws IOException {
+        String postUrl = "HOST/api/cases/bulk";
+        String credentials = readCredentialsFile();
+        String username = credentials.substring(credentials.indexOf("username:") + 10, credentials.indexOf("password:"));
+        String password = credentials.substring(credentials.indexOf("password:") + 10, credentials.length());
+
+        JSONArray patientsJSON = new JSONArray();
+        for(ContentValues patient : patientList) {
+            JSONObject object = cvToJSONObject(patient);
+            patientsJSON.put(object);
+        }
+
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("patients", patientsJSON);
+        }
+        catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setBasicAuth(username, password);
+        RequestParams patientData = JsonHelper.toRequestParams(parameters);
+        client.post(postUrl, patientData, new JsonHttpResponseHandler() {
+            // called when response HTTP status is "200 OK"
+            public void onSuccess (int statusCode, Header[] headers, JSONArray response){
+                ACK = false;
+                try {
+                    if (response.getString(0).equals("valid")){
+                        ACK = true;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (ACK) {
+                    dbHelper.deleteAll();
+                    createNewDialog();
+                }
+                else {
+                    Toast.makeText(PatientListActivity.this, "Error sending data to server. Try again in a moment.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+            // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+            public void onFailure (int statusCode, Header[] headers, Throwable e, JSONObject errorResponse){
+                e.printStackTrace();
+            }
+
+        });
+
+    }
+
 }
+
+
+

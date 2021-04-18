@@ -54,7 +54,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void loginPOST(String username, String password) {
-        String postUrl = "SERVER_URL/user/validate";
+        String postUrl = "SERVER_URL/api/user/validate";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         JSONObject postData = new JSONObject();
@@ -121,14 +121,11 @@ public class SignInActivity extends AppCompatActivity {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(Constants.CREDENTIALS_FILE_NAME,
                     Context.MODE_PRIVATE));
-            byte[] usernameBytes = username.getBytes();
-            byte[] passwordBytes = password.getBytes();
-            usernameBytes = encrypt(usernameBytes);
-            passwordBytes = encrypt(passwordBytes);
-            outputStreamWriter.write("username: " + usernameBytes);
+
+            outputStreamWriter.write("username: " + username);
             outputStreamWriter.write("\r\n");
 
-            outputStreamWriter.write("password: " + passwordBytes);
+            outputStreamWriter.write("password: " + password);
             outputStreamWriter.close();
 
         } catch(FileNotFoundException e)

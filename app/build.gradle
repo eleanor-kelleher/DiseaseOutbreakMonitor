@@ -49,6 +49,7 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.0'
     implementation rootProject.ext.rxJava
     implementation 'com.github.tbruyelle:rxpermissions:0.12'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 }
 repositories {
     mavenCentral()
