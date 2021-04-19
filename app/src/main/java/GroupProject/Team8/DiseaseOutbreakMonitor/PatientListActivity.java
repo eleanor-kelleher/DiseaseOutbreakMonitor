@@ -250,17 +250,9 @@ public class PatientListActivity extends AppCompatActivity {
             patientsJSON.put(object);
         }
 
-        JSONObject parameters = new JSONObject();
-        try {
-            parameters.put("patients", patientsJSON);
-        }
-        catch (JSONException e){
-            e.printStackTrace();
-        }
-
         AsyncHttpClient client = new AsyncHttpClient();
         client.setBasicAuth(username, password);
-        RequestParams patientData = JsonHelper.toRequestParams(parameters);
+        RequestParams patientData = JsonHelper.toRequestParams(patientsJSON);
         client.post(postUrl, patientData, new JsonHttpResponseHandler() {
             // called when response HTTP status is "200 OK"
             public void onSuccess (int statusCode, Header[] headers, JSONArray response){

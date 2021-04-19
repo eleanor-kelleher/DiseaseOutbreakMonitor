@@ -18,12 +18,12 @@ public class JsonHelper
 {
     /**
      * Convert JSONObject or JSONArray to RequestParams
-     * @param jsonObject
+     * @param jsonArray
      * @return
      */
-    public static RequestParams toRequestParams(JSONObject jsonObject)
+    public static RequestParams toRequestParams(JSONArray jsonArray)
     {
-        return mapToRequestParams(objectToHashMap(jsonObject, ""));
+        return mapToRequestParams(arrayToHashMap(jsonArray, ""));
     }
 
     /**
